@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'tracks/index'
+
+  get 'tracks/new'
+
+  post 'tracks/create'
+
+  get 'tracks/show'
+
+  get 'tracks/edit'
+
+  patch 'tracks/update'
+
+  delete 'tracks/destroy'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
