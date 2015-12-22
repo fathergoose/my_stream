@@ -10,4 +10,8 @@
 #
 
 class Album < ActiveRecord::Base
+  has_many :album_artists
+  has_many :artists, through: :album_artists
+  has_many :track_albums
+  has_many :albums, through: :track_albums
 end
