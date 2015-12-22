@@ -15,4 +15,8 @@
 
 class Track < ActiveRecord::Base
   mount_uploader :path, PathUploader
+  has_many :track_albums
+  has_many :albums, through: :track_albums
+  has_many :track_artists
+  has_many :artists, through: :track_artists
 end
