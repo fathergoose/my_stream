@@ -1,4 +1,4 @@
-<%= form_tag '/tracks', method: :post do  %>
+<%= form_tag '/tracks', multipart: true, method: :post do  %>
   <%= label_tag "Choose a file to upload" %>
   <%= file_field_tag :path  %>
   <%= submit_tag "Upload" %>
