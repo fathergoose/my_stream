@@ -6,6 +6,13 @@ class TracksController < ApplicationController
   end
 
   def create
+  #  @track = Track.new(
+  #    path: params["path"]
+  #  )
+    @track = Track.new
+    @track.path = params[:path]
+    @track.save
+    p @track
     redirect_to '/tracks'
   end
 
