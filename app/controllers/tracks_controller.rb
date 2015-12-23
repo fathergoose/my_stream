@@ -6,6 +6,7 @@ class TracksController < ApplicationController
   end
 
   def create
+    redirect_to '/tracks'
   end
 
   def show
