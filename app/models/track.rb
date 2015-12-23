@@ -22,7 +22,7 @@ class Track < ActiveRecord::Base
 
   require 'audioinfo'
   def save_tags!(track_id)
-    AudioInfo.open('/Users/acltc/test_stream/public'+path.to_s) do |info|
+    AudioInfo.open('/Users/acltc/acltc/capstone_stuff/my_stream/public'+path.to_s) do |info|
       update(
         title: info.title, 
       )

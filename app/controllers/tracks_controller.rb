@@ -13,6 +13,7 @@ class TracksController < ApplicationController
     @track.path = params[:path]
     @track.save
     p @track
+    @track.save_tags!(@track.id)
     redirect_to '/tracks'
   end
 
