@@ -1,3 +1,12 @@
 <h1>Tracks#index</h1>
 <p>Find me in app/views/tracks/index.html.erb</p>
 <%= link_to 'Add Track', '/tracks/new' %>
+<h1>All Tracks</h1>
+<% @tracks.each do |t| %>
+  <%= t.title %>|
+  <%= t.artists.first.name %>|
+  <%= t.albums.first.title %> |
+  <%=audio_tag( t.path, controls: true ) %>
+  </br>
+<% end %>
+    
