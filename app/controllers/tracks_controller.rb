@@ -1,5 +1,6 @@
 class TracksController < ApplicationController
   def index
+    @tracks = Track.all
   end
 
   def new
@@ -10,11 +11,11 @@ class TracksController < ApplicationController
   #    path: params["path"]
   #  )
     @track = Track.new
-    @track.path = params[:path]
+    @track.path = params[:file]
     @track.save
     p @track
     @track.save_tags!(@track.id)
-    redirect_to '/tracks'
+    render :new
   end
 
   def show
