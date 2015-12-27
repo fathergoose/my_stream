@@ -22,17 +22,25 @@ class Track < ActiveRecord::Base
 
   require 'audioinfo'
   def save_tags!(track_id)
-    AudioInfo.open('/Users/acltc/acltc/capstone_stuff/my_stream/public'+path.to_s) do |info|
+    AudioInfo.open('public'+path.to_s) do |info|
       update(
         title: info.title, 
       )
-      @artist = Artist.find_by(name: info.artist)
+      @artist = Artist.find_by(name: info.artist) ## Look up rails find or create by 
       if(@artist)
         TrackArtist.create(artist_id: @artist.id, track_id: track_id)
       else
         @artist = Artist.create(name: info.artist)
         TrackArtist.create(artist_id: @artist.id, track_id: track_id)
       end
+      @album = Album.find_by(title: info.album)
+      if(@album)
+        TrackAlbum.create(album_id: @album.id, track_id: track_id)
+      else
+        @album = Album.create(title: info.album)
+        TrackAlbum.create(album_id: @album.id, track_id: track_id)
+      end
+
     end
   end
      
