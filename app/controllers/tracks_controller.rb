@@ -1,7 +1,12 @@
 class TracksController < ApplicationController
   def index
-    @tracks = Track.all
+    if user_signed_in?
+      @tracks = Track.user_tracks
+    else
+      redirect_to 'pages#welcome'
+    end
   end
+
 
   def new
   end
