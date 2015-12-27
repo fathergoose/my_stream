@@ -15,10 +15,18 @@
 
 class Track < ActiveRecord::Base
   mount_uploader :path, PathUploader
+
+  belongs_to :user
+
   has_many :track_albums
   has_many :albums, through: :track_albums
+
   has_many :track_artists
   has_many :artists, through: :track_artists
+
+  # def Initialize
+  #   saves current user's id to track
+  # end
 
   require 'audioinfo'
   def save_tags!(track_id)
