@@ -24,9 +24,10 @@ class Track < ActiveRecord::Base
   has_many :track_artists
   has_many :artists, through: :track_artists
 
-  # def Initialize
-  #   saves current user's id to track
-  # end
+
+  def self.user_tracks(user_id)
+    where user_id: user_id
+  end
 
   require 'audioinfo'
   def save_tags!(track_id)
