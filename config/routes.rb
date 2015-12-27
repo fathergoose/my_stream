@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'tracks#index'
   get 'tracks' => 'tracks#index'
 
@@ -13,6 +14,10 @@ Rails.application.routes.draw do
   patch 'tracks/:id' => 'tracks#update'
 
   delete 'tracks/:id' => 'tracks#destroy'
+
+  ## Pages actions
+  
+  get 'pages/welcome' => 'pages#welcome'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
