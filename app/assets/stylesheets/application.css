@@ -12,6 +12,13 @@
  *
  *= require jquery.plupload.queue
  *
+ *= require jquery-ui.min.css
+ *= require bootstrap.min.css
+ *= require font-awesome.min.css
+ *= require animate.min.css
+ *= require style.min.css
+ *= require style-responsive.min.css
+ *= require red.css
  *= require_tree .
  *= require_self
  */

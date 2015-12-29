@@ -22,4 +22,11 @@
 //= require jquery.plupload.queue
 //
 //= require turbolinks
+//= require pace.min.js
+//= require jquery-migrate-1.1.0.min.js
+//= require jquery-ui.min.js
+//= require bootstrap.min.js
+//= require jquery.slimscroll.min.js
+//= require jquery.cookie.js
+//= require apps.min.js
 //= require_tree .
