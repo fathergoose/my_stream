@@ -10,15 +10,18 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require jquery.plupload.queue
- *
+ * Theme base CSS
  *= require jquery-ui.min.css
- *= require bootstrap.min.css
- *= require font-awesome.min.css
+ *= require bootstrap.css
+ *= require font-awesome.css
  *= require animate.min.css
  *= require style.min.css
  *= require style-responsive.min.css
  *= require red.css
+ * Page specific CSS
+ *= require blueimp-gallery.min.css
+ *= require jquery.fileupload.css
+ *= require jquery.fileupload-ui.css
  *= require_tree .
  *= require_self
  */
