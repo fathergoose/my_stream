@@ -25,7 +25,7 @@ class TracksController < ApplicationController
     puts '##################### track'
     p @track
     @track.save_tags!(@track.id)
-    # render :new
+    render :new
   end
 
   def show
