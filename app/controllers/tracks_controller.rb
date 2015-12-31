@@ -16,12 +16,16 @@ class TracksController < ApplicationController
   #    path: params["path"]
   #  )
     p current_user
+    puts '#################params##############'
+    p params
     @track = Track.new(user_id: current_user.id)
-    @track.path = params[:filename]
+    p @track
+    @track.path = params[:path][0]
     @track.save
+    puts '##################### track'
     p @track
     @track.save_tags!(@track.id)
-    render :new
+    # render :new
   end
 
   def show
