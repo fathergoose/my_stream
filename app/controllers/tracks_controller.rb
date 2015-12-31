@@ -17,7 +17,7 @@ class TracksController < ApplicationController
   #  )
     p current_user
     @track = Track.new(user_id: current_user.id)
-    @track.path = params[:path]
+    @track.path = params[:filename]
     @track.save
     p @track
     @track.save_tags!(@track.id)
