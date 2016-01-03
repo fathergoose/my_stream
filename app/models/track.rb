@@ -53,19 +53,19 @@ class Track < ActiveRecord::Base
     end
   end
 
-  
-  
+  before_save :update_track_attributes
 
-  include Rails.application.routes.url_helpers
+  private
 
-  def to_jq_upload
-    {
-      "name" => read_attribute(:upload_file_name),
-      "size" => read_attribute(:upload_file_size),
-      "url" => track.url(:original),
-      "delete_url" => upload_path(self),
-      "delete_type" => "DELETE" 
-    }
+  def update_track_attributes
+    if path.present? && path_changed?
+      self.file_format = path.content_type
+      self.file_size = path.file.size
+    end
   end
+  
+  
+
+
      
 end
