@@ -41,7 +41,7 @@ var handleJqueryFileUpload = function() {
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
         url: $('#fileupload').fileupload('option', 'url'),
-        dataType: 'json',
+        dataType: 'html',
         context: $('#fileupload')[0]
     }).always(function () {
         $(this).removeClass('fileupload-processing');

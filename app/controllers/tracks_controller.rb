@@ -25,7 +25,19 @@ class TracksController < ApplicationController
     puts '##################### track'
     p @track
     @track.save_tags!(@track.id)
-    render :new
+    # render :new
+    response = {
+      "files": [
+        {
+          "name": "#{@track.title}",
+          
+          
+          },
+      ]
+    }
+    p response
+    render json: response
+
   end
 
   def show
