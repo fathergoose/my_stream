@@ -43,6 +43,7 @@
 //= require jquery.fileupload-ui.js
 //=
 //= require form-multiple-upload.demo.js
+//= require login-v2.demo.js
 //= require apps.min.js
 //
 //= require_tree .
