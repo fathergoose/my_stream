@@ -1,58 +1,22 @@
-<!-- begin #content -->
-<div id="content" class="content">
-  <!-- begin breadcrumb -->
-  <ol class="breadcrumb pull-right">
-    <li><a href="javascript:;">Home</a></li>
-    <li><a href="javascript:;">Page Options</a></li>
-    <li class="active">Blank Page</li>
-  </ol>
-  <!-- end breadcrumb -->
-  <!-- begin page-header -->
-  <h1 class="page-header">Blank Page <small>header small text goes here...</small></h1>
-  <!-- end page-header -->
-  
-  <div class="row">
-    <div class="col-md-12">
-      <div class="panel panel-inverse">
-        <div class="panel-heading">
-          <div class="panel-heading-btn">
-            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
-            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
-          </div>
-          <h4 class="panel-title">Welcome</h4>
-        </div>
-        <div class="panel-body">
-
-
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="field">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true %>
-          </div>
-
-          <div class="field">
-            <%= f.label :password %><br />
-            <%= f.password_field :password, autocomplete: "off" %>
-          </div>
-
-          <% if devise_mapping.rememberable? -%>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-          </div>
-          <% end -%>
-
-          <div class="actions">
-            <%= f.submit "Log in" %>
-          </div>
-          <% end %>
-
-          <%= render "devise/shared/links" %>
-        </div>
-      </div>
-    </div>
-  </div>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="form-group m-b-20">
+  <%= f.email_field :email, autofocus: true, class: "form-control input-lg", placeholder:"Email Address" %>
 </div>
-    <!-- end #content -->
+
+<div class="form-group m-b-20">
+  <%= f.password_field :password, autocomplete: "off", class: "form-control input-lg", placeholder:"Password" %>
+</div>
+
+<% if devise_mapping.rememberable? -%>
+<div class="form-group m-b-20">
+  <%= f.check_box :remember_me %>&nbsp;&nbsp;
+  <%= f.label :remember_me %>
+</div>
+<% end -%>
+
+<div class="login-buttons">
+  <%= f.submit "Log in", class: "btn btn-success btn-block btn-lg" %>
+</div>
+<% end %>
+
+<%= render "devise/shared/links" %>
