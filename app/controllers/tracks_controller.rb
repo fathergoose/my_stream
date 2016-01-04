@@ -30,7 +30,8 @@ class TracksController < ApplicationController
       "files": [
         {
           "name": "#{@track.title}",
-          
+          "format": "#{@track.file_format}",
+          "size": "#{@track.file_size}",
           
           },
       ]
