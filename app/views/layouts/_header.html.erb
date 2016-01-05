@@ -94,7 +94,7 @@
           <li><a href="javascript:;">Calendar</a></li>
           <li><a href="javascript:;">Setting</a></li>
           <li class="divider"></li>
-          <li><a href="javascript:;">Log Out</a></li>
+          <li><%= link_to "sign out", "/users/sign_out", method: :delete, class: "item" %></li>
         </ul>
       </li>
     </ul>
