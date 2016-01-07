@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  root 'tracks#index'
+  root 'pages#home'
 
   get 'tracks' => 'tracks#index'
   get 'tracks/new' => 'tracks#new'
@@ -14,5 +14,6 @@ Rails.application.routes.draw do
 
   ## Pages actions
   get 'pages/welcome' => 'pages#welcome'
+  get 'pages/home' => 'pages#home'
 
 end
