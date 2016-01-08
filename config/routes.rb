@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   get 'tracks' => 'tracks#index'
-  get 'tracks/new' => 'tracks#new'
   post 'tracks' => 'tracks#create'
   get 'tracks/:id' => 'tracks#show'
   get 'tracks/:id/edit' => 'tracks#edit'
@@ -15,5 +14,6 @@ Rails.application.routes.draw do
   ## Pages actions
   get 'pages/welcome' => 'pages#welcome'
   get 'pages/home' => 'pages#home'
+  get 'pages/upload' => 'pages#upload'
 
 end

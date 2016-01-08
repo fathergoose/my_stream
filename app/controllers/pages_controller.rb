@@ -6,5 +6,9 @@ class PagesController < ApplicationController
   def home
      redirect_to '/pages/welcome' unless user_signed_in?
   end
+
+  def upload
+    redirect_to '/pages/welcome' unless user_signed_in?
+  end
      
 end
