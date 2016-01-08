@@ -41,9 +41,10 @@
 //= require jquery.fileupload-video.js
 //= require jquery.fileupload-validate.js
 //= require jquery.fileupload-ui.js
+//= require scrollMonitor.js
+//= require apps.min.js
 //=
 //= require form-multiple-upload.demo.js
 //= require login-v2.demo.js
-//= require apps.min.js
 //
 //= require_tree .
