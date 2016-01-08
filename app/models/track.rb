@@ -23,6 +23,9 @@ class Track < ActiveRecord::Base
 
   has_many :track_artists
   has_many :artists, through: :track_artists
+  
+  has_many :playlist_tracks
+  has_many :playlists, through: :playlist_tracks
 
 
   def self.user_tracks(user_id)
