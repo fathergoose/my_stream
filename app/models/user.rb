@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :tracks
+  has_many :playlists
   def short_name
     email[/[^@]+/]
   end
