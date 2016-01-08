@@ -12,14 +12,39 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require moxie
-//= require plupload.dev
 //
-// optional, but recommended. it sets generic settings like flash url, etc.
-//= require plupload.settings
-//
-// optional, only if you want to use the jquery integration
-//= require jquery.plupload.queue
 //
 //= require turbolinks
+// 
+// Insert Base Theme Needs Here
+//
+//= require pace.min.js
+//= require jquery-migrate-1.1.0.min.js
+//= require jquery-ui.min.js
+//= require bootstrap.min.js
+//= require jquery.slimscroll.min.js
+//= require jquery.cookie.js
+//
+// Begin page specific scripts
+// Multi-uploads
+//
+//= require jquery.ui.widget.js
+//= require tmpl.min.js
+//= require load-image.min.js 
+//= require canvas-to-blob.min.js
+//= require jquery.blueimp-gallery.min.js
+//= require jquery.iframe-transport.js
+//= require jquery.fileupload.js
+//= require jquery.fileupload-process.js
+//= require jquery.fileupload-image.js
+//= require jquery.fileupload-audio.js
+//= require jquery.fileupload-video.js
+//= require jquery.fileupload-validate.js
+//= require jquery.fileupload-ui.js
+//= require scrollMonitor.js
+//= require apps.min.js
+//=
+//= require form-multiple-upload.demo.js
+//= require login-v2.demo.js
+//
 //= require_tree .

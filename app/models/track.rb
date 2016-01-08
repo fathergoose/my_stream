@@ -33,7 +33,8 @@ class Track < ActiveRecord::Base
   def save_tags!(track_id)
     AudioInfo.open('public'+path.to_s) do |info|
       update(
-        title: info.title, 
+        title: info.title,
+
       )
       @artist = Artist.find_by(name: info.artist) ## Look up rails find or create by 
       if(@artist)
@@ -44,13 +45,28 @@ class Track < ActiveRecord::Base
       end
       @album = Album.find_by(title: info.album)
       if(@album)
-        TrackAlbum.create(album_id: @album.id, track_id: track_id)
+        TrackAlbum.create(album_id: @album.id, track_id: track_id, tracknum: info.tracknum) # what is the ruby way to protect against null here?
       else
         @album = Album.create(title: info.album)
-        TrackAlbum.create(album_id: @album.id, track_id: track_id)
+        TrackAlbum.create(album_id: @album.id, track_id: track_id, tracknum: info.tracknum)
       end
 
     end
   end
+
+  before_save :update_track_attributes
+
+  private
+
+  def update_track_attributes
+    if path.present? && path_changed?
+      self.file_format = path.content_type
+      self.file_size = path.file.size
+    end
+  end
+  
+  
+
+
      
 end
