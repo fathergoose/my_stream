@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :tracks
   has_many :playlists
+  has_many :albums
   def short_name
     email[/[^@]+/]
   end
