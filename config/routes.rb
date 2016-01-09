@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   delete 'tracks/:id' => 'tracks#destroy'
 
   get 'albums' => 'albums#index'
+  get 'albums/:id' => 'albums#show'
 
   ## Pages actions
   get 'pages/welcome' => 'pages#welcome'
