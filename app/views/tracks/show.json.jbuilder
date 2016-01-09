@@ -1,4 +1,6 @@
-json.id @track.id
+json.trackNumber @track.track_number
 json.title @track.title
-json.url @track.path.url
 json.artist @track.artists.first.name
+json.album @track.album.title
+json.url @track.path.url
+json.id @track.id
