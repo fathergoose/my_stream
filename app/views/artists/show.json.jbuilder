@@ -5,5 +5,6 @@ json.albums @artist.albums do |album|
   json.tracks album.tracks do |track|
     json.title track.title
     json.trackNumber track.track_number
+    json.url track.path.url
   end
 end
