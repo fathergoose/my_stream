@@ -10,20 +10,10 @@ class TracksController < ApplicationController
 
 
   def create
-  #  @track = Track.new(
-  #    path: params["path"]
-  #  )
-    p current_user
-    puts '#################params##############'
-    p params
     @track = Track.new
-    p @track
     @track.path = params[:path][0]
     @track.save
-    puts '##################### track'
-    p @track
     @track.save_tags!(@track.id, current_user)
-    # render :new
     response = {
       "files": [
         {
@@ -34,9 +24,7 @@ class TracksController < ApplicationController
           },
       ]
     }
-    p response
     render json: response
-
   end
 
   def show
