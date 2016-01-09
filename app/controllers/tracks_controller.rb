@@ -16,7 +16,7 @@ class TracksController < ApplicationController
     p current_user
     puts '#################params##############'
     p params
-    @track = Track.new(user_id: current_user.id)
+    @track = Track.new
     p @track
     @track.path = params[:path][0]
     @track.save
