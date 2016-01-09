@@ -22,7 +22,7 @@ class TracksController < ApplicationController
     @track.save
     puts '##################### track'
     p @track
-    @track.save_tags!(@track.id)
+    @track.save_tags!(@track.id, current_user)
     # render :new
     response = {
       "files": [

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'albums/index'
+
+  get 'albums/show'
+
   devise_for :users
 
   root 'pages#home'
@@ -10,6 +14,8 @@ Rails.application.routes.draw do
   get 'tracks/:id/edit' => 'tracks#edit'
   patch 'tracks/:id' => 'tracks#update'
   delete 'tracks/:id' => 'tracks#destroy'
+
+  get 'albums' => 'albums#index'
 
   ## Pages actions
   get 'pages/welcome' => 'pages#welcome'
