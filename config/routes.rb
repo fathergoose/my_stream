@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'artists/index'
+
+  get 'artists/show'
+
   get 'albums/index'
 
   get 'albums/show'
@@ -17,6 +21,10 @@ Rails.application.routes.draw do
 
   get 'albums' => 'albums#index'
   get 'albums/:id' => 'albums#show'
+
+  get 'artists' => 'artists#index'
+  get 'artists/:id' => 'artists#show'
+
 
   ## Pages actions
   get 'pages/welcome' => 'pages#welcome'
