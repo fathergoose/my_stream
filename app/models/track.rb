@@ -38,11 +38,11 @@ class Track < ActiveRecord::Base
   def save_tags!(track_id, current_user)
 
     AudioInfo.open('public'+path.to_s) do |info|
-      @artist = Artist.find_by(name: info.artist) ## Look up rails find or create by 
+      @artist = Artist.where(name: info.artist, user_id: current_user.id).take
       if(@artist)
         TrackArtist.create(artist_id: @artist.id, track_id: track_id)
       else
-        @artist = Artist.create(name: info.artist)
+        @artist = Artist.create(name: info.artist, user_id: current_user.id)
         TrackArtist.create(artist_id: @artist.id, track_id: track_id)
       end
       @album = Album.where(title: info.album, user_id: current_user.id).take
