@@ -46,11 +46,9 @@ class Track < ActiveRecord::Base
         TrackArtist.create(artist_id: @artist.id, track_id: track_id)
       end
       @album = Album.where(title: info.album, user_id: current_user.id).take
-      # if(@album)
-      #   TrackAlbum.create(album_id: @album.id, track_id: track_id, tracknum: info.tracknum) # what is the ruby way to protect against null here?
       unless @album
         @album = Album.create(title: info.album, user_id: current_user.id)
-        # TrackAlbum.create(album_id: @album.id, track_id: track_id, tracknum: info.tracknum)
+        AlbumArtist.create(artist_id: @artist.id, album_id: @album.id)
       end
 
       update(
