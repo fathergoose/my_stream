@@ -33,7 +33,7 @@ class Track < ActiveRecord::Base
   end
 
   require 'audioinfo'
-  def save_tags!(track_id)
+  def save_tags!(track_id, current_user)
     AudioInfo.open('public'+path.to_s) do |info|
       update(
         title: info.title,
@@ -46,11 +46,11 @@ class Track < ActiveRecord::Base
         @artist = Artist.create(name: info.artist)
         TrackArtist.create(artist_id: @artist.id, track_id: track_id)
       end
-      @album = Album.find_by(title: info.album)
+      @album = Album.where(title: info.album, user_id: current_user.id).take
       if(@album)
         TrackAlbum.create(album_id: @album.id, track_id: track_id, tracknum: info.tracknum) # what is the ruby way to protect against null here?
       else
-        @album = Album.create(title: info.album)
+        @album = Album.create(title: info.album, user_id: current_user.id)
         TrackAlbum.create(album_id: @album.id, track_id: track_id, tracknum: info.tracknum)
       end
 
