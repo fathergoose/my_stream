@@ -40,6 +40,11 @@ gem 'ruby-audioinfo'
 
 gem 'annotate'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-angular'
+  gem 'rails-assets-angular-audio'
+end
+
 # gem 'plupload-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 
