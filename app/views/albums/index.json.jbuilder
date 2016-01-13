@@ -6,5 +6,6 @@ json.array! @albums do |album|
   json.tracks album.tracks do |track|
     json.title track.title
     json.url track.path.url
+    json.trackNumber track.track_number
   end
 end
