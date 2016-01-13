@@ -10,15 +10,25 @@
   </div>
   <div class="panel-body" ng-app='myStream'>
       <h1>{{1+1}}</h1>
-      <div ng-controller='playCtrl'>
+      <div ng-controller='PlayCtrl' ng-init="setup()">
+        <h3>playingList;)</h3>
+        <ul ng-repeat="track in playingList track by $index">
+          <li>{{track.title}}</li>
+        </ul>
         <button ng-click='audio.paused ? audio.play() : audio.pause()'>Pause</button>
         <button ng-click='audio.restart()'>Stop</button>
-        <button ng-click='audio.muting = !audio.muting'>Mute</button>
-
+        <button ng-click='audio.muting = !audio.muting'>Mute</button></br>
+        <p></p>
         <label>Current Time</label>
-        <input class='form-control' type=text ng-model='audio.currentTime'>
+        <input class='form-control'  ng-model='audio.currentTime'>
         <label>Volume</label>
         <input class='form-control' type=range min=0 max=1 step=0.01 ng-model='audio.volume'>
+        <div ng-repeat="album in albums">
+          <h3>{{album.title}}</h3>
+          <div ng-repeat="track in album.tracks">
+            <p ng-click="add(track)">{{track.title}}</p>
+          </div>
+        </div>
       </div>
   </div>
 </div>
