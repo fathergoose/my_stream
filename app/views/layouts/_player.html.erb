@@ -25,7 +25,7 @@
         <input class='form-control' type=range min=0 max=1 step=0.01 ng-model='audio.volume'>
         <div ng-repeat="album in albums">
           <h3>{{album.title}}</h3>
-          <div ng-repeat="track in album.tracks">
+          <div ng-repeat="track in album.tracks | orderBy:'trackNumber'">
             <p ng-click="add(track)">{{track.title}}</p>
           </div>
         </div>
