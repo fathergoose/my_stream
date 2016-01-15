@@ -1,6 +1,6 @@
 (function() {
   "use strict";
 
-  angular.module('myStream', ['ngAudio']);
+  angular.module('myStream', []);
 
 }());
