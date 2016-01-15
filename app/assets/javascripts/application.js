@@ -1,3 +1,4 @@
+/* eslint-disable */
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -11,9 +12,10 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+//= require jquery-ujs
 //
 //= require jplayer
+//= require jplayer.playlist
 //
 //
 // Insert Base Theme Needs Here
