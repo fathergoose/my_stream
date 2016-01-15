@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //
+//= require jplayer
 //
 //
 // Insert Base Theme Needs Here
@@ -47,7 +48,5 @@
 //= require login-v2.demo.js
 //
 //= require angular
-//= require angular-audio
-//= require myStream
 //
 //= require_tree .

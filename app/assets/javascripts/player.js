@@ -1,4 +1,4 @@
-myStream = angular.module('myStream',['ngAudio']).controller('PlayCtrl', function($scope,$http,ngAudio){
+myStream = angular.module('myStream',[]).controller('PlayCtrl', function($scope,$http){
   var player, nowPlaying = 0;
 
   $scope.playingList = []
@@ -14,7 +14,7 @@ myStream = angular.module('myStream',['ngAudio']).controller('PlayCtrl', functio
   if($scope.playingList.length != 0){
   $scope.audio = ngAudio.load($scope.playingList[nowPlaying].url);
   }
-  
+
   $scope.start = function() {
     $scope.audio.play();
   };
@@ -24,7 +24,7 @@ myStream = angular.module('myStream',['ngAudio']).controller('PlayCtrl', functio
   $scope.next = function(){
     nowPlaying = nowPlaying + 1;
   };
-  
+
   $scope.add = function(track) {
     if($scope.playingList.length === 0) {
       $scope.audio = track.url;
