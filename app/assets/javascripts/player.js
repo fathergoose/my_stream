@@ -14,6 +14,7 @@ myStream.controller('PlayCtrl', function($scope, $http) {
   };
 
   $scope.playingList = [];
+
   $scope.$watch(function() {
     return jPlayerPlaylist.playlist;
   }, function(playlist) {
@@ -33,7 +34,7 @@ myStream.controller('PlayCtrl', function($scope, $http) {
 
   $scope.remove = function(index) {
     console.log(index);
-    jPlayerPlaylist.remove(index);
+    console.log(jPlayerPlaylist.remove(index));
   };
 
   window.scope = $scope;
@@ -55,7 +56,8 @@ $(document).ready(function() {
       smoothPlayBar: true,
       keyEnabled: true,
       playlistOptions: {
-        enableRemoveControls: true
+        enableRemoveControls: true,
+        removeTime: 0
       }
     });
 });
