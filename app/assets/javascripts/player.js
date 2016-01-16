@@ -1,8 +1,11 @@
-myStream = angular.module('myStream',[]).controller('PlayCtrl', function($scope,$http){
-  var player, nowPlaying = 0;
+/* global angular,  window, document, $ */
 
-  $scope.playingList = []
+var myStream = angular.module('myStream', []);
+// var scope = angular.element(document.getElementById('PlayCtrl')).scope();
+var nowPlayingList;
+var jPlayerPlaylist;
 
+myStream.controller('PlayCtrl', function($scope, $http) {
   $scope.setup = function() {
     $http.get('albums.json').then(function(response) {
       $scope.albums = response.data;
@@ -10,32 +13,49 @@ myStream = angular.module('myStream',[]).controller('PlayCtrl', function($scope,
     });
   };
 
-
-  if($scope.playingList.length != 0){
-  $scope.audio = ngAudio.load($scope.playingList[nowPlaying].url);
+  $scope.playingList = [];
+  $scope.$watch(function() {
+    return jPlayerPlaylist.playlist;
+  }, function(playlist) {
+    $scope.nowPlayingList = playlist;
   }
-
-  $scope.start = function() {
-    $scope.audio.play();
-  };
-
-
-
-  $scope.next = function(){
-    nowPlaying = nowPlaying + 1;
-  };
+);
 
   $scope.add = function(track) {
-    if($scope.playingList.length === 0) {
-      $scope.audio = track.url;
-      $scope.playingList.push(track);
-    } else {
-      $scope.playingList.push(track);
+    console.log('heYYYYYYYYYYYESSSSSSSS!!!!!@', track.title);
+    jPlayerPlaylist.add({
+      title: track.title,
+      mp3: track.url
     }
+    );
+    console.log($scope.nowPlayingList, jPlayerPlaylist.playlist);
   };
 
+  $scope.remove = function(index) {
+    console.log(index);
+    jPlayerPlaylist.remove(index);
+  };
 
+  window.scope = $scope;
+});
 
-
-  window.scope = $scope
+$(document).ready(function() {
+  nowPlayingList = window.scope.playingList;
+  jPlayerPlaylist = new jPlayerPlaylist({ // eslint-disable-line
+    jPlayer: '#jquery_jplayer_1',
+    cssSelectorAncestor: '#jp_container_1'
+  },
+    nowPlayingList,
+    {
+      swfPath: '../../dist/jplayer',
+      supplied: 'mp3',
+      wmode: 'window',
+      useStateClassSkin: true,
+      autoBlur: false,
+      smoothPlayBar: true,
+      keyEnabled: true,
+      playlistOptions: {
+        enableRemoveControls: true
+      }
+    });
 });
