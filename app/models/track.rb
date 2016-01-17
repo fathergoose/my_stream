@@ -18,8 +18,9 @@ class Track < ActiveRecord::Base
 
   belongs_to :user
 
-  has_many :track_albums
-  has_many :albums, through: :track_albums
+  #has_many :track_albums
+  #has_many :albums, through: :track_albums
+  belongs_to :album 
 
   has_many :track_artists
   has_many :artists, through: :track_artists
@@ -33,27 +34,29 @@ class Track < ActiveRecord::Base
   end
 
   require 'audioinfo'
-  def save_tags!(track_id)
-    AudioInfo.open('public'+path.to_s) do |info|
-      update(
-        title: info.title,
 
-      )
-      @artist = Artist.find_by(name: info.artist) ## Look up rails find or create by 
+  def save_tags!(track_id, current_user)
+
+    AudioInfo.open('public'+path.to_s) do |info|
+      @artist = Artist.where(name: info.artist, user_id: current_user.id).take
       if(@artist)
         TrackArtist.create(artist_id: @artist.id, track_id: track_id)
       else
-        @artist = Artist.create(name: info.artist)
+        @artist = Artist.create(name: info.artist, user_id: current_user.id)
         TrackArtist.create(artist_id: @artist.id, track_id: track_id)
       end
-      @album = Album.find_by(title: info.album)
-      if(@album)
-        TrackAlbum.create(album_id: @album.id, track_id: track_id, tracknum: info.tracknum) # what is the ruby way to protect against null here?
-      else
-        @album = Album.create(title: info.album)
-        TrackAlbum.create(album_id: @album.id, track_id: track_id, tracknum: info.tracknum)
+      @album = Album.where(title: info.album, user_id: current_user.id).take
+      unless @album
+        @album = Album.create(title: info.album, user_id: current_user.id)
+        AlbumArtist.create(artist_id: @artist.id, album_id: @album.id)
       end
 
+      update(
+        title: info.title,
+        track_number: info.tracknum,
+        album_id: @album.id,
+        user_id: current_user.id
+      )
     end
   end
 
