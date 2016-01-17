@@ -1,3 +1,45 @@
 #sidebar > div > div > ul > li > a > i {
   font-size: 2em;
 }
+.jp-progress {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: #e2e7eb;fied
+}
+
+.jp-seek-bar {
+    width:0px;
+    height:100%;
+    cursor: pointer;
+}
+
+.jp-seeking-bg {
+    background:#575555;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+}
+
+.jp-play-bar {
+    width:0px;
+    height:10px;
+    position:relative;
+    z-index: 9999;
+    background-color: #ff5b57;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+}
+.jp-play-bar .handle {
+  float: right;
+  height: 30px;
+  width: 30px;
+}
+.jp-play-bar span {
+    position:absolute;
+    top: -3px;
+    right: -12px;
+
+    width: 16px;
+    height: 17px;
+}
