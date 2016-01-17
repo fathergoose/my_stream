@@ -39,25 +39,3 @@ myStream.controller('PlayCtrl', function($scope, $http) {
 
   window.scope = $scope;
 });
-
-$(document).ready(function() {
-  nowPlayingList = window.scope.playingList;
-  jPlayerPlaylist = new jPlayerPlaylist({ // eslint-disable-line
-    jPlayer: '#jquery_jplayer_1',
-    cssSelectorAncestor: '#jp_container_1'
-  },
-    nowPlayingList,
-    {
-      swfPath: '../../dist/jplayer',
-      supplied: 'mp3',
-      wmode: 'window',
-      useStateClassSkin: true,
-      autoBlur: false,
-      smoothPlayBar: true,
-      keyEnabled: true,
-      playlistOptions: {
-        enableRemoveControls: true,
-        removeTime: 0
-      }
-    });
-});
