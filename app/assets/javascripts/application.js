@@ -14,8 +14,8 @@
 //= require jquery_ujs
 //
 //
-//= require turbolinks
-// 
+//= require angular
+//
 // Insert Base Theme Needs Here
 //
 //= require pace.min.js
@@ -30,7 +30,7 @@
 //
 //= require jquery.ui.widget.js
 //= require tmpl.min.js
-//= require load-image.min.js 
+//= require load-image.min.js
 //= require canvas-to-blob.min.js
 //= require jquery.blueimp-gallery.min.js
 //= require jquery.iframe-transport.js
@@ -46,5 +46,9 @@
 //=
 //= require form-multiple-upload.demo.js
 //= require login-v2.demo.js
+//= require jquery.jplayer
+//= require jplayer.playlist
+//= require aurora
+//= require flac
 //
 //= require_tree .

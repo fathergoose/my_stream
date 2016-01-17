@@ -1,0 +1,14 @@
+<table class="table condensed">
+  <tbody ng-repeat="album in albums">
+    <tr>
+      <th><i class="fa fa-chevron-down"></i></th>
+      <th>{{album.title}}</th>
+      <th>{{album.artist.name}}</th>
+      <th>Year</th>
+      <tr ng-repeat="track in album.tracks">
+        <td><button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button></td>
+        <td>{{track.title}}</td>
+      </tr>
+    </tr>
+  </tbody>
+</table>
