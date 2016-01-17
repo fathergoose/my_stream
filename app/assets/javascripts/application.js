@@ -46,5 +46,6 @@
 //=
 //= require form-multiple-upload.demo.js
 //= require login-v2.demo.js
+//= require jquery.jplayer
 //
 //= require_tree .
