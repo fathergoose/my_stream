@@ -5,27 +5,6 @@ var myStream = angular.module('myStream', []);
 var nowPlayingList;
 var jPlayerPlaylist;
 
-$(document).ready(function() {
-  nowPlayingList = window.scope.playingList;
-  jPlayerPlaylist = new jPlayerPlaylist({ // eslint-disable-line
-    jPlayer: '#jquery_jplayer_1',
-    cssSelectorAncestor: '#jp_container_1'
-  },
-    nowPlayingList,
-    {
-      solution: 'html, aurora',
-      supplied: 'mp3',
-      wmode: 'window',
-      useStateClassSkin: true,
-      autoBlur: false,
-      smoothPlayBar: true,
-      keyEnabled: true,
-      playlistOptions: {
-        enableRemoveControls: true,
-        removeTime: 0  // necessary to tie in with angular
-      }
-    });
-});
 
 myStream.controller('PlayCtrl', function($scope, $http) {
   $scope.setup = function() {

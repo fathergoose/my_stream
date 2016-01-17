@@ -36,8 +36,8 @@
       </ul>
     </div>
     <p>################Begin Angular Zone#######</p>
-    <div ng-app="myStream">
-      <div ng-controller="PlayCtrl" id="PlayCtrl" ng-init="setup()">
+    <div>
+      <div>
         <p>==============Playlist=================</p>
         <div ng-repeat="track in nowPlayingList track by $index">
           <em ng-click="remove($index)">
@@ -46,12 +46,6 @@
           {{track.title}}
         </div>
         <p>===============Library==================</p>
-        <div ng-repeat="album in albums">
-          <h3>{{album.title}}</h3>
-          <div ng-repeat="track in album.tracks">
-            <p ng-click="add(track)">{{track.title}}</p>
-          </div>
-        </div>
       </div>
     </div>
     <div class="jp-no-solution">
