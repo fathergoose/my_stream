@@ -1,6 +1,12 @@
-<div ng-repeat="album in albums">
-  <h3>{{album.title}}</h3>
-  <div ng-repeat="track in album.tracks">
-    <p ng-click="add(track)">{{track.title}}</p>
-  </div>
-</div>
+<table class="table condensed">
+  <tbody ng-repeat="album in albums">
+    <tr>
+      <th>{{album.artist.name}}</th>
+      <th>{{album.title}}</th>
+      <tr ng-repeat="track in album.tracks">
+        <td><button class="btn btn-xs btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button></td>
+        <td>{{track.title}}</td>
+      </tr>
+    </tr>
+  </tbody>
+</table>

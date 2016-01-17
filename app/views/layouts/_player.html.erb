@@ -35,17 +35,12 @@
         <li>&nbsp;</li>
       </ul>
     </div>
-    <p>################Begin Angular Zone#######</p>
     <div>
-      <div>
-        <p>==============Playlist=================</p>
-        <div ng-repeat="track in nowPlayingList track by $index">
-          <em ng-click="remove($index)">
-            (-)
-          </em>
-          {{track.title}}
-        </div>
-        <p>===============Library==================</p>
+      <div ng-repeat="track in nowPlayingList track by $index">
+        <em ng-click="remove($index)">
+          (-)
+        </em>
+        {{track.title}}
       </div>
     </div>
     <div class="jp-no-solution">
