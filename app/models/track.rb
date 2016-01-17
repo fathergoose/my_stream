@@ -20,11 +20,11 @@ class Track < ActiveRecord::Base
 
   #has_many :track_albums
   #has_many :albums, through: :track_albums
-  belongs_to :album 
+  belongs_to :album
 
   has_many :track_artists
   has_many :artists, through: :track_artists
-  
+
   has_many :playlist_tracks
   has_many :playlists, through: :playlist_tracks
 
@@ -38,6 +38,7 @@ class Track < ActiveRecord::Base
   def save_tags!(track_id, current_user)
 
     AudioInfo.open('public'+path.to_s) do |info|
+      p info
       @artist = Artist.where(name: info.artist, user_id: current_user.id).take
       if(@artist)
         TrackArtist.create(artist_id: @artist.id, track_id: track_id)
@@ -70,9 +71,9 @@ class Track < ActiveRecord::Base
       self.file_size = path.file.size
     end
   end
-  
-  
 
 
-     
+
+
+
 end

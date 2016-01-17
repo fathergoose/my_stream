@@ -48,5 +48,7 @@
 //= require login-v2.demo.js
 //= require jquery.jplayer
 //= require jplayer.playlist
+//= require aurora
+//= require flac
 //
 //= require_tree .

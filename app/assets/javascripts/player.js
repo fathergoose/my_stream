@@ -1,10 +1,8 @@
-/* global angular,  window, document, $ */
+/* global angular,  window */
 
 var myStream = angular.module('myStream', []);
 // var scope = angular.element(document.getElementById('PlayCtrl')).scope();
-var nowPlayingList;
 var jPlayerPlaylist;
-
 
 myStream.controller('PlayCtrl', function($scope, $http) {
   $scope.setup = function() {
@@ -25,11 +23,20 @@ myStream.controller('PlayCtrl', function($scope, $http) {
 
   $scope.add = function(track) {
     console.log('heYYYYYYYYYYYESSSSSSSS!!!!!@', track.title);
-    jPlayerPlaylist.add({
-      title: track.title,
-      mp3: track.url
+    if ((/\.(flac)$/i).test(track.url)) {
+      jPlayerPlaylist.add({
+        title: track.title,
+        flac: track.url
+      });
+    } else if ((/\.(mp3)$/i).test(track.url)) {
+      jPlayerPlaylist.add({
+        title: track.title,
+        mp3: track.url
+      });
+    } else {
+      // returns error
     }
-    );
+
     console.log($scope.nowPlayingList, jPlayerPlaylist.playlist);
   };
 
