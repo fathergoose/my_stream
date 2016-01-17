@@ -13,10 +13,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
 # Use jquery as the JavaScript library
+gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -39,12 +39,12 @@ gem 'ruby-audioinfo'
 
 gem 'annotate'
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-angular'
-  gem 'rails-assets-jquery'
-  gem 'rails-assets-jquery-ujs'
-  gem 'rails-assets-jplayer'
-end
+# source 'https://rails-assets.org' do
+#   gem 'rails-assets-angular'
+#   gem 'rails-assets-jquery'
+#   gem 'rails-assets-jquery-ujs'
+#   gem 'rails-assets-jplayer'
+# end
 
 # gem 'plupload-rails'
 gem 'bootstrap-sass', '~> 3.3.6'

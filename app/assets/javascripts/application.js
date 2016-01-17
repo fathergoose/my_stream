@@ -12,10 +12,8 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery-ujs
+//= require jquery_ujs
 //
-//= require jplayer
-//= require jplayer.playlist
 //
 //
 // Insert Base Theme Needs Here
@@ -48,6 +46,8 @@
 //=
 //= require form-multiple-upload.demo.js
 //= require login-v2.demo.js
+//= require jquery.jplayer
+//= require jplayer.playlist
 //
 //= require angular
 //
