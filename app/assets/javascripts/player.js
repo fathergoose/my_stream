@@ -45,5 +45,16 @@ myStream.controller('PlayCtrl', function($scope, $http) {
     console.log(jPlayerPlaylist.remove(index));
   };
 
+  $scope.toggleExpand = function(album) {
+    album.expanded = !album.expanded;
+  };
+  $scope.getToggleIcon = function(album) {
+    if (album.expanded) {
+      return 'fa fa-shevron-right';
+    } else { // eslint no-else-return=1
+      return 'fa fa-shevron-down';
+    }
+  };
+
   window.scope = $scope;
 });

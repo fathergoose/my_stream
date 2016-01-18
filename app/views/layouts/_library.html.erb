@@ -1,13 +1,21 @@
+<div class="pull-right">
+  <form class="navbar-form full-width">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Enter keyword" />
+      <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+    </div>
+  </form>
+</div>
 <table class="table condensed">
   <tbody ng-repeat="album in albums">
     <tr>
-      <th><i class="fa fa-chevron-down"></i></th>
+      <th ng-click="toggleExpand(album)"><i class="fa fa-chevron-right"></i></th>
       <th>{{album.title}}</th>
       <th>{{album.artist.name}}</th>
       <th>Year</th>
-      <tr ng-repeat="track in album.tracks">
+      <tr ng-show="album.expanded" ng-repeat="track in album.tracks">
         <td><button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button></td>
-        <td>{{track.title}}</td>
+        <td colspan="3">{{track.title}}</td>
       </tr>
     </tr>
   </tbody>
