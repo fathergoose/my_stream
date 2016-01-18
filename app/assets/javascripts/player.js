@@ -4,6 +4,8 @@ var myStream = angular.module('myStream', ['ngAnimate']);
 // var scope = angular.element(document.getElementById('PlayCtrl')).scope();
 var jPlayerPlaylist;
 
+/* Library Functions */
+
 myStream.controller('PlayCtrl', function($scope, $http) {
   $scope.setup = function() {
     $http.get('albums.json').then(function(response) {
@@ -33,6 +35,28 @@ myStream.controller('PlayCtrl', function($scope, $http) {
       console.log(response, $scope.playlists);
     });
   };
+
+  $scope.changeView = function(view) {
+    console.log(view);
+    switch (view) {
+      case 'artists':
+        $scope.getArtists();
+        $scope.showing = 'artists';
+        break;
+      case 'tracks':
+        $scope.getTracks();
+        $scope.showing = 'tracks';
+        break;
+      case 'playlists':
+        $scope.getPlaylists();
+        $scope.showing = 'playlists';
+        break;
+      default:
+        $scope.setup();
+    }
+  };
+
+/* Playlists Functions */
 
   $scope.playingList = [];
 

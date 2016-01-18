@@ -2,10 +2,10 @@
   <div class="col-md-6">
     <div class="btn-group btn-group-justified">
       <!-- Use angular to put 'active' into the active button -->
-      <a ng-class="{'btn btn-default': showing!='artists', 'active btn btn-default': showing==='artists'}" ng-click="showing = 'artists'">Artists</a>
-      <a ng-class="{'btn btn-default': showing!='albums', 'active btn btn-default': showing==='albums'}" ng-click="showing = 'albums'">Albums</a>
-      <a ng-class="{'btn btn-default': showing!='tracks', 'active btn btn-default': showing==='tracks'}" ng-click="showing = 'tracks'">Tracks</a>
-      <a ng-class="{'btn btn-default': showing!='playlists', 'active btn btn-default': showing==='playlists'}" ng-click="showing = 'playlists'">Playlists</a>
+      <a ng-class="{'btn btn-default': showing!='artists', 'active btn btn-default': showing==='artists'}" ng-click="changeView('artists')">Artists</a>
+      <a ng-class="{'btn btn-default': showing!='albums', 'active btn btn-default': showing==='albums'}" ng-click="changeView('albums')">Albums</a>
+      <a ng-class="{'btn btn-default': showing!='tracks', 'active btn btn-default': showing==='tracks'}" ng-click="changeView('tracks')">Tracks</a>
+      <a ng-class="{'btn btn-default': showing!='playlists', 'active btn btn-default': showing==='playlists'}" ng-click="changeView('playlists')">Playlists</a>
     </div>
   </div>
   <div class="pull-right">
@@ -19,18 +19,35 @@
 </div>
 <div class="row">
 
-<table class="table condensed">
-  <tbody ng-repeat="album in albums">
-    <tr>
-      <th ng-click="album.expanded = !album.expanded"><i ng-class="{'fa fa-chevron-right': !album.expanded, 'fa fa-chevron-down': album.expanded}"></i></th>
-      <th>{{album.title}}</th>
-      <th>{{album.artist.name}}</th>
-      <th>Year</th>
-      <tr ng-show="album.expanded" ng-repeat="track in album.tracks">
-        <td><button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button></td>
-        <td colspan="3">{{track.title}}</td>
+  <table class="table condensed" ng-show="showing==='artists'">
+    <tbody ng-repeat="artist in artists">
+      <tr>
+        <td>{{artist.name}}</td>
+        <tr ng-repeat="album in artist.albums">
+          <td ng-click="album.expanded = !album.expanded"><i ng-class="{'fa fa-chevron-right': !album.expanded, 'fa fa-chevron-down': album.expanded}"></i></td>
+          <td>{{album.title}}</td>
+          <td>Year</td>
+          <tr ng-show="album.expanded" ng-repeat="track in artist.album.tracks">
+            <td><button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button></td>
+            <td colspan="3">{{track.title}}</td>
+          </tr>
+        </tr>
       </tr>
-    </tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+
+  <table class="table condensed" ng-show="showing==='albums'">
+    <tbody ng-repeat="album in albums">
+      <tr>
+        <th ng-click="album.expanded = !album.expanded"><i ng-class="{'fa fa-chevron-right': !album.expanded, 'fa fa-chevron-down': album.expanded}"></i></th>
+        <th>{{album.title}}</th>
+        <th>{{album.artist.name}}</th>
+        <th>Year</th>
+        <tr ng-show="album.expanded" ng-repeat="track in album.tracks">
+          <td><button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button></td>
+          <td colspan="3">{{track.title}}</td>
+        </tr>
+      </tr>
+    </tbody>
+  </table>
 </div>
