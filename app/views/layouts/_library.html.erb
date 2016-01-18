@@ -1,15 +1,28 @@
-<div class="pull-right">
-  <form class="navbar-form full-width">
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Enter keyword" />
-      <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+<div class="row">
+  <div class="col-md-6">
+    <div class="btn-group btn-group-justified">
+      <!-- Use angular to put 'active' into the active button -->
+      <a ng-class="{'btn btn-default': showing!='artists', 'active btn btn-default': showing==='artists'}" ng-click="showing = 'artists'">Artists</a>
+      <a ng-class="{'btn btn-default': showing!='albums', 'active btn btn-default': showing==='albums'}" ng-click="showing = 'albums'">Albums</a>
+      <a ng-class="{'btn btn-default': showing!='tracks', 'active btn btn-default': showing==='tracks'}" ng-click="showing = 'tracks'">Tracks</a>
+      <a ng-class="{'btn btn-default': showing!='playlists', 'active btn btn-default': showing==='playlists'}" ng-click="showing = 'playlists'">Playlists</a>
     </div>
-  </form>
+  </div>
+  <div class="pull-right">
+    <form class="navbar-form full-width">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Enter keyword" />
+        <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+      </div>
+    </form>
+  </div>
 </div>
+<div class="row">
+
 <table class="table condensed">
   <tbody ng-repeat="album in albums">
     <tr>
-      <th ng-click="toggleExpand(album)"><i class="fa fa-chevron-right"></i></th>
+      <th ng-click="album.expanded = !album.expanded"><i ng-class="{'fa fa-chevron-right': !album.expanded, 'fa fa-chevron-down': album.expanded}"></i></th>
       <th>{{album.title}}</th>
       <th>{{album.artist.name}}</th>
       <th>Year</th>
@@ -20,3 +33,4 @@
     </tr>
   </tbody>
 </table>
+</div>
