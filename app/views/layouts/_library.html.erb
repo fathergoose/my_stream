@@ -38,6 +38,21 @@
       </li>
     </ul>
   </div>
+  <!-- <table class="table condensed" ng-show="showing==='artists'">
+    <tbody ng-repeat="artist in artists">
+      <tr>
+        <th ng-click="artist.expanded = !artist.expanded"><i ng-class="{'fa fa-chevron-right': !artist.expanded, 'fa fa-chevron-down': artist.expanded}"></i></th>
+        <th>{{artist.name}}</th>
+        <tr ng-show="artist.expanded" ng-repeat="album in artist.albums">
+          <td>{{album.title}}</td>
+          <tr ng-repeat"track in album.tracks">
+            <td><button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button></td>
+            <td>{{track.title}}</td>
+          </tr>
+        </tr>
+      </tr>
+    </tbody>
+  </table> -->
 
   <table class="table condensed" ng-show="showing==='albums'">
     <tbody ng-repeat="album in albums">

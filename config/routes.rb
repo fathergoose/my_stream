@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get 'artists/:id' => 'artists#show'
 
   get 'playlists' => 'playlists#index'
+  post 'playlists' => 'playlists#create'
 
 
   ## Pages actions

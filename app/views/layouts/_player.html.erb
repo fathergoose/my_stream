@@ -51,7 +51,7 @@ Now playing
     <tr>
       <th><span class="fa-stack fa-2x text-danger" ng-click="remove()"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-trash fa-stack-1x"></i></span></th>
       <th>Current Playlist</th>
-      <th><span class="fa-stack fa-2x text-success"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-save fa-stack-1x"></i></span></button></th>
+      <th><span class="fa-stack fa-2x text-success" ng-click="savePlaylist(playingList)"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-save fa-stack-1x"></i></span></button></th>
     </tr>
     <tbody ng-repeat="track in nowPlayingList track by $index">
       <tr>

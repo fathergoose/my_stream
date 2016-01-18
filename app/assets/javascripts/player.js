@@ -80,7 +80,9 @@ myStream.controller('PlayCtrl', function($scope, $http) {
         mp3: track.url
       });
     } else {
-      // returns error
+      $scope.errors.push(
+        'This file format is currently unsupported'
+    );
     }
 
     console.log($scope.nowPlayingList, jPlayerPlaylist.playlist);
@@ -89,6 +91,20 @@ myStream.controller('PlayCtrl', function($scope, $http) {
   $scope.remove = function(index) {
     console.log(index);
     console.log(jPlayerPlaylist.remove(index));
+  };
+
+  $scope.savePlaylist = function(playlist) {
+    var newPlaylist = {
+      name: playlist.name,
+      tracks: playlist.tracks
+    };
+    $http.post('playlists', newPlaylist).then(function(response) {
+      $scope.playlist = response.data;
+      $scope.playlists.push(playlist);
+    }, function(error) {
+      console.log(error, '##########');
+      $scope.errors = error.data.errors;
+    });
   };
 
   window.scope = $scope;
