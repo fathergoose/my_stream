@@ -1,3 +1,4 @@
+/* eslint-disable */
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -50,5 +51,6 @@
 //= require flac
 //= require jquery.jplayer
 //= require jplayer.playlist
+//= require angular-animate.min.js
 //
 //= require_tree .

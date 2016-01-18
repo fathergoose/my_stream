@@ -1,6 +1,6 @@
 /* global angular,  window */
 
-var myStream = angular.module('myStream', []);
+var myStream = angular.module('myStream', ['ngAnimate']);
 // var scope = angular.element(document.getElementById('PlayCtrl')).scope();
 var jPlayerPlaylist;
 
