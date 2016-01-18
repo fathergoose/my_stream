@@ -19,22 +19,25 @@
 </div>
 <div class="row">
 
-  <table class="table condensed" ng-show="showing==='artists'">
-    <tbody ng-repeat="artist in artists">
-      <tr>
-        <td>{{artist.name}}</td>
-        <tr ng-repeat="album in artist.albums">
-          <td ng-click="album.expanded = !album.expanded"><i ng-class="{'fa fa-chevron-right': !album.expanded, 'fa fa-chevron-down': album.expanded}"></i></td>
-          <td>{{album.title}}</td>
-          <td>Year</td>
-          <tr ng-show="album.expanded" ng-repeat="track in artist.album.tracks">
-            <td><button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button></td>
-            <td colspan="3">{{track.title}}</td>
-          </tr>
-        </tr>
-      </tr>
-    </tbody>
-  </table>
+  <div class="" ng-show="showing==='artists'">
+    <ul ng-repeat="artist in artists">
+      <li>
+        {{artist.name}}
+        <ul ng-repeat="album in artist.albums" ng-click="album.expanded = !album.expanded">
+          <li>
+            <i ng-class="{'fa fa-chevron-right': !album.expanded, 'fa fa-chevron-down': album.expanded}"></i>
+            {{album.title}}
+            <ul ng-show="album.expanded" ng-repeat="track in album.tracks">
+              <li>
+                <button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button>
+                {{track.title}}
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 
   <table class="table condensed" ng-show="showing==='albums'">
     <tbody ng-repeat="album in albums">
@@ -48,6 +51,23 @@
           <td colspan="3">{{track.title}}</td>
         </tr>
       </tr>
+    </tbody>
+  </table>
+
+  <table class="table condensed" ng-show="showing==='tracks'">
+    <tbody>
+      <tr>
+        <th>&nbsp;</th>
+        <th>Name</th>
+        <th>Artist</th>
+        <th>Album</th>
+      </tr>
+      <tr ng-repeat="track in tracks">
+          <td><button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button></td>
+          <td>{{track.title}}</td>
+          <td>{{track.artist}}</td>
+          <td>{{track.album}}</td>
+        </tr>
     </tbody>
   </table>
 </div>
