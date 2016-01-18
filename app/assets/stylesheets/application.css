@@ -22,7 +22,7 @@
  *= require blueimp-gallery.min.css
  *= require jquery.fileupload.css
  *= require jquery.fileupload-ui.css
- *= require ng-animation
+ *= require animate
  *= require_tree .
  *= require_self
  */

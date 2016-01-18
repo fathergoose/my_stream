@@ -16,7 +16,7 @@
 //
 //
 //= require angular
-//
+//= require angular-animate.min.js
 // Insert Base Theme Needs Here
 //
 //= require pace.min.js
@@ -51,6 +51,5 @@
 //= require flac
 //= require jquery.jplayer
 //= require jplayer.playlist
-//= require angular-animate.min.js
 //
 //= require_tree .

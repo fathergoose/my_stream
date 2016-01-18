@@ -122,3 +122,11 @@ h3#now-playing {
   margin-top: 10px;
   margin-bottom: 5px;
 }
+
+table#playlist {
+  margin-bottom: 0px;
+}
+
+.table tbody tr td {
+  padding: 6px 10px;
+}
