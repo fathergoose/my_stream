@@ -10,6 +10,28 @@ myStream.controller('PlayCtrl', function($scope, $http) {
       $scope.albums = response.data;
       console.log(response);
     });
+    $scope.showing = 'albums';
+  };
+
+  $scope.getArtists = function() {
+    $http.get('artists.json').then(function(response) {
+      $scope.artists = response.data;
+      console.log(response, $scope.artists);
+    });
+  };
+
+  $scope.getTracks = function() {
+    $http.get('tracks.json').then(function(response) {
+      $scope.tracks = response.data;
+      console.log(response, $scope.tracks);
+    });
+  };
+
+  $scope.getPlaylists = function() {
+    $http.get('playlists.json').then(function(response) {
+      $scope.playlists = response.data;
+      console.log(response, $scope.playlists);
+    });
   };
 
   $scope.playingList = [];
@@ -22,7 +44,7 @@ myStream.controller('PlayCtrl', function($scope, $http) {
 );
 
   $scope.add = function(track) {
-    console.log('heYYYYYYYYYYYESSSSSSSS!!!!!@', track.title);
+    console.log(track.title);
     if ((/\.(flac)$/i).test(track.url)) {
       jPlayerPlaylist.add({
         title: track.title,
@@ -43,17 +65,6 @@ myStream.controller('PlayCtrl', function($scope, $http) {
   $scope.remove = function(index) {
     console.log(index);
     console.log(jPlayerPlaylist.remove(index));
-  };
-
-  $scope.toggleExpand = function(album) {
-    album.expanded = !album.expanded;
-  };
-  $scope.getToggleIcon = function(album) {
-    if (album.expanded) {
-      return 'fa fa-shevron-right';
-    } else { // eslint no-else-return=1
-      return 'fa fa-shevron-down';
-    }
   };
 
   window.scope = $scope;
