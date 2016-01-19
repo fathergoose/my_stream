@@ -6,5 +6,6 @@ json.array! @playlists do |playlist|
     json.title track.title
     json.artist track.artists.first.name
     json.url track.path.url
+    json.id track.id
   end
 end

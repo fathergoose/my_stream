@@ -7,6 +7,7 @@ json.array! @artists do |artist|
       json.title track.title
       json.trackNumber track.track_number
       json.url track.path.url
+      json.id track.id
     end
   end
 end
