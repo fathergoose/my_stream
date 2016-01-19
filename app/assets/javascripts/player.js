@@ -99,6 +99,7 @@ myStream.controller('PlayCtrl', function($scope, $http) {
     console.log($scope.nowPlayingList);
     var newPlaylist = {
       name: playlist.name,
+      notes: playlist.notes,
       tracks: playlist
     };
     $http.post('playlists', newPlaylist).then(function(response) {

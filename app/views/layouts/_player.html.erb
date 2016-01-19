@@ -86,9 +86,12 @@ Now playing
         <h4 class="modal-title">Modal Dialog</h4>
       </div>
       <div class="modal-body">
-        <input ng-model="nowPlayingList.name" placeholder="Name your new playlist...">
-
-
+        <div class="form-group">
+        <input class="form-control" ng-model="nowPlayingList.name" placeholder="Name your new playlist...">
+      </div>
+      <div class="form-goroup">
+        <input class="form-control" ng-model="nowPlayingList.notes" placeholder="notes..">
+      </div>
       </div>
       <div class="modal-footer">
         <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
