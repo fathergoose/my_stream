@@ -72,12 +72,14 @@ myStream.controller('PlayCtrl', function($scope, $http) {
     if ((/\.(flac)$/i).test(track.url)) {
       jPlayerPlaylist.add({
         title: track.title,
-        flac: track.url
+        flac: track.url,
+        id: track.id
       });
     } else if ((/\.(mp3)$/i).test(track.url)) {
       jPlayerPlaylist.add({
         title: track.title,
-        mp3: track.url
+        mp3: track.url,
+        id: track.id
       });
     } else {
       $scope.errors.push(
@@ -96,8 +98,8 @@ myStream.controller('PlayCtrl', function($scope, $http) {
   $scope.savePlaylist = function(playlist) {
     console.log($scope.nowPlayingList);
     var newPlaylist = {
-      name: playlist.name,
-      tracks: playlist.tracks
+      name: "name",
+      tracks: playlist
     };
     $http.post('playlists', newPlaylist).then(function(response) {
       $scope.playlist = response.data;

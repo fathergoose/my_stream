@@ -43,6 +43,8 @@
 //= require jquery.fileupload-validate.js
 //= require jquery.fileupload-ui.js
 //= require scrollMonitor.js
+//= require ui-modal-notification.demo
+//= require jquery.gritter
 //= require apps.min.js
 //=
 //= require form-multiple-upload.demo.js
