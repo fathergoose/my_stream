@@ -58,7 +58,7 @@ myStream.controller('PlayCtrl', function($scope, $http) {
 
 /* Playlists Functions */
 
-  $scope.playingList = [];
+//  $scope.playingList = [];
 
   $scope.$watch(function() {
     return jPlayerPlaylist.playlist;
@@ -68,7 +68,7 @@ myStream.controller('PlayCtrl', function($scope, $http) {
 );
 
   $scope.add = function(track) {
-    console.log(track.title);
+    console.log(track);
     if ((/\.(flac)$/i).test(track.url)) {
       jPlayerPlaylist.add({
         title: track.title,
@@ -94,13 +94,14 @@ myStream.controller('PlayCtrl', function($scope, $http) {
   };
 
   $scope.savePlaylist = function(playlist) {
+    console.log($scope.nowPlayingList);
     var newPlaylist = {
       name: playlist.name,
       tracks: playlist.tracks
     };
     $http.post('playlists', newPlaylist).then(function(response) {
       $scope.playlist = response.data;
-      $scope.playlists.push(playlist);
+      $scope.playlists.push(newPlaylist);
     }, function(error) {
       console.log(error, '##########');
       $scope.errors = error.data.errors;

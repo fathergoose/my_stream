@@ -19,7 +19,7 @@
 </div>
 <div class="row">
 
-  <div class="" ng-show="showing==='artists'">
+  <!-- <div class="" ng-show="showing==='artists'">
     <ul ng-repeat="artist in artists">
       <li>
         {{artist.name}}
@@ -37,22 +37,51 @@
         </ul>
       </li>
     </ul>
-  </div>
-  <!-- <table class="table condensed" ng-show="showing==='artists'">
+  </div> -->
+  <table class="table condensed" ng-show="showing==='artists'">
     <tbody ng-repeat="artist in artists">
       <tr>
-        <th ng-click="artist.expanded = !artist.expanded"><i ng-class="{'fa fa-chevron-right': !artist.expanded, 'fa fa-chevron-down': artist.expanded}"></i></th>
-        <th>{{artist.name}}</th>
+        <th ng-click="artist.expanded = !artist.expanded">
+          <i ng-class="{'fa fa-chevron-right': !artist.expanded, 'fa fa-chevron-down': artist.expanded}"></i>
+        </th>
+        <th>
+          {{artist.name}}
+        </th>
+        <th>
+        </th>
         <tr ng-show="artist.expanded" ng-repeat="album in artist.albums">
-          <td>{{album.title}}</td>
-          <tr ng-repeat"track in album.tracks">
-            <td><button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button></td>
-            <td>{{track.title}}</td>
-          </tr>
+          <td></td>
+          <td colspan="2">
+            <table style="width:100%;">
+              <tbody>
+                <th>
+                </th>
+                <th ng-click="album.expanded = !album.expanded">
+                  &nbsp;<i ng-class="{'fa fa-chevron-right': !album.expanded, 'fa fa-chevron-down': album.expanded}"></i>
+                </th>
+                <th>
+                  {{album.title}}
+                </th>
+                <tr ng-show="album.expanded" ng-repeat="track in album.tracks">
+                  <td>
+
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                    <button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)">
+                    <i class="fa fa-plus"></i></button>
+                    <span>{{track.title}}</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+
         </tr>
       </tr>
     </tbody>
-  </table> -->
+  </table>
 
   <table class="table condensed" ng-show="showing==='albums'">
     <tbody ng-repeat="album in albums">
