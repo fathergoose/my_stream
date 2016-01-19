@@ -98,12 +98,13 @@ myStream.controller('PlayCtrl', function($scope, $http) {
   $scope.savePlaylist = function(playlist) {
     console.log($scope.nowPlayingList);
     var newPlaylist = {
-      name: "name",
+      name: playlist.name,
       tracks: playlist
     };
     $http.post('playlists', newPlaylist).then(function(response) {
       $scope.playlist = response.data;
-      $scope.playlists.push(newPlaylist);
+      console.log('$$$$$$', newPlaylist)
+      $scope.getPlaylists();
     }, function(error) {
       console.log(error, '##########');
       $scope.errors = error.data.errors;
