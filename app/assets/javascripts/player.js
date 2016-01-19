@@ -1,4 +1,4 @@
-/* global angular,  window */
+/* global angular,  window, $ */
 
 var myStream = angular.module('myStream', ['ngAnimate']);
 // var scope = angular.element(document.getElementById('PlayCtrl')).scope();
@@ -62,15 +62,34 @@ myStream.controller('PlayCtrl', function($scope, $http) {
 
   $scope.$watch(function() {
     return jPlayerPlaylist;
-  }, function(jPlayerPlaylist) {
-    $scope.nowPlayingList = jPlayerPlaylist.playlist;
+  }, function(playlist) {
+    $scope.nowPlayingList = playlist.playlist;
   //  $scope.current = jPlayerPlaylist.current;
   }
 );
 
+  var successNotification = function(newPlaylist) {
+    $.gritter.add({
+      // (string | mandatory) the heading of the notification
+      title: 'Success',
+      // (string | mandatory) the text inside the notification
+      text: 'Your playlist <strong>' + newPlaylist.name + '</strong> was successfully saved'
+    });
+  };
+
+  var errorNotification = function(error) {
+    $.gritter.add({
+      // (string | mandatory) the heading of the notification
+      title: 'Error!',
+      // (string | mandatory) the text inside the notification
+      text: 'Status <strong>' + error.status + '</strong> returned.' +
+      'Your playlist was unable to be saved, be sure you included songs'
+    });
+  };
+
   $scope.getCurrent = function() {
     $scope.current = jPlayerPlaylist.current;
-  }
+  };
 
   $scope.add = function(track) {
     console.log(track);
@@ -109,11 +128,13 @@ myStream.controller('PlayCtrl', function($scope, $http) {
     };
     $http.post('playlists', newPlaylist).then(function(response) {
       $scope.playlist = response.data;
-      console.log('$$$$$$', newPlaylist)
       $scope.getPlaylists();
+      console.log('$$$$$$Success$$$$$$', response.status);
+      successNotification(newPlaylist);
     }, function(error) {
       console.log(error, '##########');
       $scope.errors = error.data.errors;
+      errorNotification(error);
     });
   };
 

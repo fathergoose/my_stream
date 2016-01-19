@@ -8,13 +8,25 @@
       <a ng-class="{'btn btn-default': showing!='playlists', 'active btn btn-default': showing==='playlists'}" ng-click="changeView('playlists')">Playlists</a>
     </div>
   </div>
-  <div class="pull-right">
-    <form class="navbar-form full-width">
+  <div ng-show="showing=='artists'"class="pull-right">
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Enter keyword" />
-        <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+        <input type="text" class="form-control" placeholder="Search artists" ng-model="query"/>
       </div>
-    </form>
+  </div>
+  <div ng-show="showing=='albums'"class="pull-right">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search albums" ng-model="query"/>
+      </div>
+  </div>
+  <div ng-show="showing=='tracks'"class="pull-right">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search tracks" ng-model="query"/>
+        </div>
+  </div>
+  <div ng-show="showing=='playlists'"class="pull-right">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search playlists" ng-model="query"/>
+      </div>
   </div>
 </div>
 <div class="row">
@@ -39,7 +51,7 @@
     </ul>
   </div> -->
   <table class="table condensed" ng-show="showing==='artists'">
-    <tbody ng-repeat="artist in artists">
+    <tbody ng-repeat="artist in artists | filter: { name: query } ">
       <tr>
         <th ng-click="artist.expanded = !artist.expanded">
           <i ng-class="{'fa fa-chevron-right': !artist.expanded, 'fa fa-chevron-down': artist.expanded}"></i>
@@ -84,7 +96,7 @@
   </table>
 
   <table class="table condensed" ng-show="showing==='albums'">
-    <tbody ng-repeat="album in albums">
+    <tbody ng-repeat="album in albums | filter: { title: query } ">
       <tr>
         <th ng-click="album.expanded = !album.expanded"><i ng-class="{'fa fa-chevron-right': !album.expanded, 'fa fa-chevron-down': album.expanded}"></i></th>
         <th>{{album.title}}</th>
@@ -106,7 +118,7 @@
         <th>Artist</th>
         <th>Album</th>
       </tr>
-      <tr ng-repeat="track in tracks">
+      <tr ng-repeat="track in tracks | filter: { title: query } ">
           <td><button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button></td>
           <td>{{track.title}}</td>
           <td>{{track.artist}}</td>
@@ -116,7 +128,7 @@
   </table>
 
   <table class="table condensed" ng-show="showing==='playlists'">
-    <tbody ng-repeat="playlist in playlists">
+    <tbody ng-repeat="playlist in playlists | filter: { title: query } ">
       <tr>
         <th ng-click="playlist.expanded = !playlist.expanded"><i ng-class="{'fa fa-chevron-right': !playlist.expanded, 'fa fa-chevron-down': playlist.expanded}"></i></th>
         <th>{{playlist.title}}</th>
@@ -130,8 +142,8 @@
   </table>
 
 </div>
-<a href="javascript:;" id="add-without-image" class="btn btn-sm btn-info">Demo</a>
-<script>
+<!-- <a href="javascript:;" id="add-without-image" class="btn btn-sm btn-info">Demo</a> -->
+<!-- <script>
 $('#add-without-image').click(function(){
 
   $.gritter.add({
@@ -143,4 +155,4 @@ $('#add-without-image').click(function(){
 
   return false;
 });
-</script>
+</script> -->
