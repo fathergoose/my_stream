@@ -120,8 +120,7 @@
       <tr>
         <th ng-click="playlist.expanded = !playlist.expanded"><i ng-class="{'fa fa-chevron-right': !playlist.expanded, 'fa fa-chevron-down': playlist.expanded}"></i></th>
         <th>{{playlist.title}}</th>
-        <th>{{playlist.artist.name}}</th>
-        <th>Year</th>
+        <th>{{playlist.notes}}</th>
         <tr ng-show="playlist.expanded" ng-repeat="track in playlist.tracks">
           <td><button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button></td>
           <td colspan="3">{{track.title}}</td>

@@ -1,8 +1,12 @@
 Now playing
-<h3 id="now-playing">Alt-J | Left Hand Free</h3>
-<p>This is all yours too</p>
+
+<h3 id="now-playing">{{nowPlayingList[current].title}}</h3> <!-- This needs two way binding-->
+<p>{{nowPlayingList[0].album}}</p> <!-- Perhaps i need to use the jPlayerPlaylist[0]? -->
 <div id="jquery_jplayer_1" class="jp-jplayer"></div>
-<div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+<div id="jp_container_1" class="jp-video" role="application" aria-label="media player">
+  <div class="jp-details">
+  					<div class="jp-title" aria-label="title">&nbsp;</div>
+  				</div>
   <div class="jp-type-playlist">
     <div class="jp-gui jp-interface">
 
@@ -35,12 +39,12 @@ Now playing
       </div>
     </div>
     <div class="jp-controls btn-group">
-      <button class="jp-stop btn btn-lg  btn-inverse" role="button" tabindex="0"><i class="fa fa-stop"></i></button>
-      <button class="jp-previous btn btn-lg  btn-inverse" role="button" tabindex="0"><i class="fa fa-fast-backward"></i></button>
-      <button class="jp-play btn btn-lg  btn-inverse" role="button" tabindex="0"><i class="fa fa-play"></i></button>
-      <button class="jp-pause btn  btn-lg btn-inverse" role="button" tabindex="0"><i class="fa fa-pause"></i></button>
-      <button class="jp-next btn btn-lg  btn-inverse" role="button" tabindex="0"><i class="fa fa-fast-forward"></i></button>
-      <button class="jp-shuffle btn  btn-lg btn-inverse" role="button" tabindex="0"><i class="fa fa-random"></i></button>
+      <button ng-click="getCurrent()" class="jp-stop btn btn-lg  btn-inverse" role="button" tabindex="0"><i class="fa fa-stop"></i></button>
+      <button ng-click="getCurrent()" class="jp-previous btn btn-lg  btn-inverse" role="button" tabindex="0"><i class="fa fa-fast-backward"></i></button>
+      <button ng-click="getCurrent()" class="jp-play btn btn-lg  btn-inverse" role="button" tabindex="0"><i class="fa fa-play"></i></button>
+      <button ng-click="getCurrent()" class="jp-pause btn  btn-lg btn-inverse" role="button" tabindex="0"><i class="fa fa-pause"></i></button>
+      <button ng-click="getCurrent()" class="jp-next btn btn-lg  btn-inverse" role="button" tabindex="0"><i class="fa fa-fast-forward"></i></button>
+      <button ng-click="getCurrent()" class="jp-shuffle btn  btn-lg btn-inverse" role="button" tabindex="0"><i class="fa fa-random"></i></button>
     </div>
   </div>
 

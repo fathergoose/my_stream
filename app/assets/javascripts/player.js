@@ -61,11 +61,16 @@ myStream.controller('PlayCtrl', function($scope, $http) {
 //  $scope.playingList = [];
 
   $scope.$watch(function() {
-    return jPlayerPlaylist.playlist;
-  }, function(playlist) {
-    $scope.nowPlayingList = playlist;
+    return jPlayerPlaylist;
+  }, function(jPlayerPlaylist) {
+    $scope.nowPlayingList = jPlayerPlaylist.playlist;
+  //  $scope.current = jPlayerPlaylist.current;
   }
 );
+
+  $scope.getCurrent = function() {
+    $scope.current = jPlayerPlaylist.current;
+  }
 
   $scope.add = function(track) {
     console.log(track);
