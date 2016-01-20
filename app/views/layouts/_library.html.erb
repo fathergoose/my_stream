@@ -114,11 +114,11 @@
     <tbody>
       <tr>
         <th>&nbsp;</th>
-        <th>Name</th>
-        <th>Artist</th>
-        <th>Album</th>
+        <th><span ng-click="sortBy('title')" class="sort-header">Name</span></th>
+        <th><span ng-click="sortBy('artist')" class="sort-header">Artist</span></th>
+        <th><span ng-click="sortBy('album')" class="sort-header">Album</span></th>
       </tr>
-      <tr ng-repeat="track in tracks | filter: { title: query } ">
+      <tr ng-repeat="track in tracks | filter: { title: query } | orderBy: sortAttribute : !sortDescending ">
           <td><button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button></td>
           <td>{{track.title}}</td>
           <td>{{track.artist}}</td>

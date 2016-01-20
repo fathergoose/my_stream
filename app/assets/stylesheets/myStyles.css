@@ -130,3 +130,7 @@ table#playlist {
 .table tbody tr td {
   padding: 6px 10px;
 }
+
+.sort-header {
+  cursor: pointer;
+}

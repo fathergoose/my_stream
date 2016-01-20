@@ -55,6 +55,12 @@ myStream.controller('PlayCtrl', function($scope, $http) {
     }
   };
 
+  $scope.sortBy = function(sortAttribute) {
+    console.log(sortAttribute);
+    $scope.sortAttribute = sortAttribute;
+    $scope.sortDescending = !$scope.sortDescending;
+  }
+
 /* Playlists Functions */
 
   $scope.$watch(function() {
