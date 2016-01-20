@@ -1,3 +1,4 @@
+/* eslint-disable */
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -15,7 +16,7 @@
 //
 //
 //= require angular
-//
+//= require angular-animate.min.js
 // Insert Base Theme Needs Here
 //
 //= require pace.min.js
@@ -42,13 +43,15 @@
 //= require jquery.fileupload-validate.js
 //= require jquery.fileupload-ui.js
 //= require scrollMonitor.js
+//= require ui-modal-notification.demo
+//= require jquery.gritter
 //= require apps.min.js
 //=
 //= require form-multiple-upload.demo.js
 //= require login-v2.demo.js
-//= require jquery.jplayer
-//= require jplayer.playlist
 //= require aurora
 //= require flac
+//= require jquery.jplayer
+//= require jplayer.playlist
 //
 //= require_tree .

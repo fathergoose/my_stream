@@ -1,18 +1,12 @@
-<div ng-app="myStream">
-  <div ng-controller="PlayCtrl" ng-init="setup()">
-<!-- begin breadcrumb -->
-<ol class="breadcrumb pull-right">
-  <li><a href="javascript:;">Home</a></li>
-  <li><a href="javascript:;">Page Options</a></li>
-  <li class="active">Blank Page</li>
-</ol>
-<!-- end breadcrumb -->
-<!-- begin page-header -->
-<h1 class="page-header">This is the current user's homepage <small>header small text goes here...</small></h1>
-<!-- end page-header -->
+
+
+<h1 class="page-header">This is your homepage <small>enjoy the tunes...</small></h1>
+
 <div class="row">
-  <div class="col-md-12"></div>
-  <div class="col-md-4">
+
+  <!-- MANAGEMNET VIEW -->
+
+  <div ng-show="homeView === 'mgmt'" class="col-md-12">
     <div class="panel panel-inverse">
       <div class="panel-heading">
         <div class="panel-heading-btn">
@@ -21,14 +15,17 @@
           <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
           <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
         </div>
-        <h4 class="panel-title">Welcome</h4>
+        <h4 class="panel-title">Manage your collection</h4>
       </div>
       <div class="panel-body">
-      <%= render 'layouts/player' %>
+        <%= render 'layouts/management' %>
       </div>
     </div>
   </div>
-  <div class="col-md-8">
+
+  <!-- UPLOAD VIEW -->
+
+  <div ng-show="homeView === 'upload'" class="col-md-12">
     <div class="panel panel-inverse">
       <div class="panel-heading">
         <div class="panel-heading-btn">
@@ -37,25 +34,58 @@
           <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
           <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
         </div>
-        <h4 class="panel-title">Welcome</h4>
+        <h4 class="panel-title">jQuery File Upload</h4>
       </div>
       <div class="panel-body">
-        <div data-scrollbar="true" data-height="600px">
-          <%= render 'layouts/library' %>
+        <%= render 'layouts/upload' %>
+      </div>
+    </div>
+
+    <!-- HOME VIEW -->
+
+    <div ng-show="homeView === 'home'" class="col-md-4">
+      <div class="panel panel-inverse">
+        <div class="panel-heading">
+          <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+          </div>
+          <h4 class="panel-title">Player</h4>
+        </div>
+        <div class="panel-body">
+          <%= render 'layouts/player' %>
+        </div>
+      </div>
+    </div>
+    <div ng-show="homeView === 'home'" class="col-md-8">
+      <div class="panel panel-inverse">
+        <div class="panel-heading">
+          <div class="panel-heading-btn">
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+          </div>
+          <h4 class="panel-title">Library</h4>
+        </div>
+        <div class="panel-body">
+          <div data-scrollbar="true" data-height="600px">
+            <%= render 'layouts/library' %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-</div>
-</div>
-<script>
-$(document).ready(function() {
-  nowPlayingList = window.scope.playingList;
-  jPlayerPlaylist = new jPlayerPlaylist({ // eslint-disable-line
-    jPlayer: '#jquery_jplayer_1',
-    cssSelectorAncestor: '#jp_container_1'
-  },
+
+  <script>
+  $(document).ready(function() {
+    nowPlayingList = window.scope.playingList;
+    jPlayerPlaylist = new jPlayerPlaylist({ // eslint-disable-line
+      jPlayer: '#jquery_jplayer_1',
+      cssSelectorAncestor: '#jp_container_1'
+    },
     nowPlayingList,
     {
       solution: 'html, aurora',
@@ -68,8 +98,16 @@ $(document).ready(function() {
       keyEnabled: true,
       playlistOptions: {
         enableRemoveControls: true,
-        removeTime: 0  // necessary to tie in with angular
+        removeTime: 0,  // necessary to tie in with angular
+        displayTime: 0,
+        addTime: 0,
+        removeTime: 0,
+        shuffleTime: 0,
       }
     });
-});
-</script>
+
+    $(".js-muute").on("click", function () {
+      $("#jquery_jplayer_1").jPlayer("mute");
+    })
+  });
+  </script>

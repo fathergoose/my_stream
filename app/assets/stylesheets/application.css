@@ -22,6 +22,8 @@
  *= require blueimp-gallery.min.css
  *= require jquery.fileupload.css
  *= require jquery.fileupload-ui.css
+ *= require jquery.gritter
+ *= require animate
  *= require_tree .
  *= require_self
  */

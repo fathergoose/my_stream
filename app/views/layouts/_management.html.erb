@@ -151,14 +151,15 @@
           <tr>
             <th ng-click="playlist.expanded = !playlist.expanded"><i ng-class="{'fa fa-chevron-right': !playlist.expanded, 'fa fa-chevron-down': playlist.expanded}"></i></th>
             <th>
-              <button class="btn btn-xs btn-icon btn-circle btn-info" ng-click="addMultiple(playlist.tracks)">
-                <i class="fa fa-plus"></i>
+              <button class="btn btn-xs btn-icon btn-circle btn-danger" ng-click="deletePlaylist(playlist)">
+                <i class="fa fa-times"></i>
               </button>
             </th>
             <th>{{playlist.title}}</th>
             <th>{{playlist.notes}}</th>
             <tr ng-show="playlist.expanded" ng-repeat="track in playlist.tracks">
-              <td><button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button></td>
+              <td>
+              </td>
               <td colspan="3">{{track.title}}</td>
             </tr>
           </tr>

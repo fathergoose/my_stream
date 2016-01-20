@@ -1,51 +1,101 @@
+Now playing
+
+<h3 id="now-playing">{{nowPlayingList[current].title}}</h3> <!-- This needs two way binding-->
+<p>{{nowPlayingList[0].album}}</p> <!-- Perhaps i need to use the jPlayerPlaylist[0]? -->
 <div id="jquery_jplayer_1" class="jp-jplayer"></div>
-<div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+<div id="jp_container_1" class="jp-video" role="application" aria-label="media player">
+  <div class="jp-details">
+  					<div class="jp-title" aria-label="title">&nbsp;</div>
+  				</div>
   <div class="jp-type-playlist">
     <div class="jp-gui jp-interface">
-      <div class="jp-controls btn-group">
-        <button class="jp-previous btn btn-inverse" role="button" tabindex="0"><i class="fa fa-fast-backward"></i></button>
-        <button class="jp-play btn btn-inverse" role="button" tabindex="0"><i class="fa fa-play"></i></button>
-        <button class="jp-pause btn btn-inverse" role="button" tabindex="0"><i class="fa fa-pause"></i></button>
-        <button class="jp-next btn btn-inverse" role="button" tabindex="0"><i class="fa fa-fast-forward"></i></button>
-        <button class="jp-stop btn btn-inverse" role="button" tabindex="0"><i class="fa fa-stop"></i></button>
-      </div>
+
       <div class="jp-progress">
         <div class="jp-seek-bar">
-          <div class="jp-play-bar"></div>
+          <div class="jp-play-bar">
+            <!-- <div class="handle">
+            <i calss="fa fa-plus"></i>
+          </div> -->
         </div>
       </div>
-      <div class="jp-volume-controls">
-        <button class="jp-mute" role="button" tabindex="1">mute</button>
-        <button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+    </div>
+    <div class="jp-time-holder">
+      <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+      <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+    </div>
+    <div class="centered f-s-10">Volume</div>
+    <div class="jp-volume-controls">
+      <div id="volume-1"></div>
+      <div id="volume-2">
+        <i class="jp-mute fa fa-lg fa-volume-off"></i></button>
+      </div>
+      <div id="volume-3">
         <div class="jp-volume-bar">
-          <div class="jp-volume-bar-value"></div>
+          <div class="jp-volume-bar-value"><span></span></div>
         </div>
       </div>
-      <div class="jp-time-holder">
-        <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
-        <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
-      </div>
-      <div class="jp-toggles">
-        <button class="jp-repeat" role="button" tabindex="0">repeat</button>
-        <button class="jp-shuffle" role="button" tabindex="0">shuffle</button>
+      <div id="volume-4">
+        <i class="jp-volume-max fa fa-lg fa-volume-up"></i>
       </div>
     </div>
-    <div class="jp-playlist">
-      <ul>
-        <li>&nbsp;</li>
-      </ul>
+    <div class="jp-controls btn-group">
+      <button ng-click="getCurrent('previous')" class="btn btn-lg  btn-inverse" role="button" tabindex="0"><i class="fa fa-fast-backward"></i></button>
+      <button ng-hide="playing" ng-click="getCurrent('play'); playing = true" class="btn btn-lg  btn-inverse" role="button" tabindex="0"><i class="fa fa-play"></i></button>
+      <button ng-show="playing" ng-click="getCurrent('pause'); playing = false" class="btn  btn-lg btn-inverse" role="button" tabindex="0"><i class="fa fa-pause"></i></button>
+      <button ng-click="getCurrent('next')" class="btn btn-lg  btn-inverse" role="button" tabindex="0"><i class="fa fa-fast-forward"></i></button>
     </div>
-    <div>
-      <div ng-repeat="track in nowPlayingList track by $index">
-        <em ng-click="remove($index)">
-          (-)
-        </em>
-        {{track.title}}
+  </div>
+
+  <table class="table condensed" id="playlist" style="margin-top: 10px;">
+    <tr>
+      <th><span class="fa-stack fa-2x text-danger" ng-click="remove()"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-trash fa-stack-1x"></i></span></th>
+      <th id="current-playlist">Current Playlist</th>
+      <th><a href="#modal-dialog" data-toggle="modal"><span class="fa-stack fa-2x text-success" ><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-save fa-stack-1x"></i></span></button></a></th>
+      <!--ng-click="savePlaylist(nowPlayingList)"-->
+    </tr>
+    <tbody ng-repeat="track in nowPlayingList track by $index">
+      <tr>
+        <td>
+          <button class="btn btn-xs btn-icon btn-circle btn-warning" ng-click="remove($index)">
+            <i class="fa fa-minus"></i>
+          </button>
+        </td>
+        <td colspan="2">
+          {{track.title}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="jp-playlist">
+    <ul class="hidden">
+      <li>&nbsp;</li>
+    </ul>
+  </div>
+  <div class="jp-no-solution">
+    <span>Update Required</span>
+    jPlayer-no-solution message: perhaps no support for this filetype or browser... use chrome/chromium.
+  </div>
+</div>
+</div>
+<div class="modal fade" id="modal-dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Save Playlist</h4>
       </div>
-    </div>
-    <div class="jp-no-solution">
-      <span>Update Required</span>
-      jPlayer-no-solution message: perhaps no support for this filetype or browser... use chrome/chromium.
+      <div class="modal-body">
+        <div class="form-group">
+        <input class="form-control" ng-model="nowPlayingList.name" placeholder="Name your new playlist...">
+      </div>
+      <div class="form-goroup">
+        <input class="form-control" ng-model="nowPlayingList.notes" placeholder="notes..">
+      </div>
+      </div>
+      <div class="modal-footer">
+        <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</a>
+        <a ng-click="savePlaylist(nowPlayingList)" class="btn btn-sm btn-success" data-dismiss="modal">Save Playlist</a>
+      </div>
     </div>
   </div>
 </div>
