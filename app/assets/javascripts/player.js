@@ -64,7 +64,6 @@ myStream.controller('PlayCtrl', function($scope, $http) {
     return jPlayerPlaylist.playlist;
   }, function(playlist) {
     $scope.nowPlayingList = playlist;
-    $scope.current = playlist.current;
   }
 );
 
