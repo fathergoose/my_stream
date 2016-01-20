@@ -70,18 +70,15 @@ myStream.controller('PlayCtrl', function($scope, $http) {
 
   var successNotification = function(newPlaylist) {
     $.gritter.add({
-      // (string | mandatory) the heading of the notification
       title: 'Success',
-      // (string | mandatory) the text inside the notification
-      text: 'Your playlist <strong>' + newPlaylist.name + '</strong> was successfully saved'
+      text: 'Your playlist <strong>' + newPlaylist.name +
+      '</strong> was successfully saved'
     });
   };
 
   var errorNotification = function(error) {
     $.gritter.add({
-      // (string | mandatory) the heading of the notification
       title: 'Error!',
-      // (string | mandatory) the text inside the notification
       text: 'Status <strong>' + error.status + '</strong> returned.' +
       'Your playlist was unable to be saved, be sure you included songs'
     });
@@ -90,23 +87,23 @@ myStream.controller('PlayCtrl', function($scope, $http) {
   $scope.getCurrent = function(mode) {
     switch (mode) {
       case 'play':
-      jPlayerPlaylist.play();
-      break;
+        jPlayerPlaylist.play();
+        break;
       case 'pause':
-      jPlayerPlaylist.pause();
-      break;
+        jPlayerPlaylist.pause();
+        break;
       case 'next':
-      jPlayerPlaylist.next();
-      break;
+        jPlayerPlaylist.next();
+        break;
       case 'previous':
-      jPlayerPlaylist.previous();
-      break;
+        jPlayerPlaylist.previous();
+        break;
       case 'shuffle':
-      jPlayerPlaylist.shuffle();
-      break;
+        jPlayerPlaylist.shuffle();
+        break;
       default:
-      return false;
-    };
+        return false;
+    }
     console.log(jPlayerPlaylist.current);
     $scope.current = jPlayerPlaylist.current;
   };
