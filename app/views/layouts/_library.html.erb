@@ -9,151 +9,127 @@
     </div>
   </div>
   <div ng-show="showing=='artists'"class="pull-right">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search artists" ng-model="query"/>
-      </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search artists" ng-model="query"/>
+    </div>
   </div>
   <div ng-show="showing=='albums'"class="pull-right">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search albums" ng-model="query"/>
-      </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search albums" ng-model="query"/>
+    </div>
   </div>
   <div ng-show="showing=='tracks'"class="pull-right">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search tracks" ng-model="query"/>
-        </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search tracks" ng-model="query"/>
+    </div>
   </div>
   <div ng-show="showing=='playlists'"class="pull-right">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search playlists" ng-model="query"/>
-      </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search playlists" ng-model="query"/>
+    </div>
   </div>
 </div>
 <div class="row">
-
-  <!-- <div class="" ng-show="showing==='artists'">
-    <ul ng-repeat="artist in artists">
-      <li>
-        {{artist.name}}
-        <ul ng-repeat="album in artist.albums" ng-click="album.expanded = !album.expanded">
-          <li>
-            <i ng-class="{'fa fa-chevron-right': !album.expanded, 'fa fa-chevron-down': album.expanded}"></i>
-            {{album.title}}
-            <ul ng-show="album.expanded" ng-repeat="track in album.tracks">
-              <li>
-                <button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button>
-                {{track.title}}
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </div> -->
   <div ng-show="showing==='artists'">
-  <table class="table condensed">
+    <table class="table condensed">
       <tr>
         <th>&nbsp;</th>
         <th><span ng-click="sortBy('name')" class="sort-header">Atrist</span></th>
         <th>&nbsp;</th>
       </tr>
     </table>
-  <table class="table condensed">
-    <tbody ng-repeat="artist in artists | filter: { name: query } | orderBy: sortAttribute : !sortDescending ">
-      <tr>
-        <th ng-click="artist.expanded = !artist.expanded">
-          <i ng-class="{'fa fa-chevron-right': !artist.expanded, 'fa fa-chevron-down': artist.expanded}"></i>
-        </th>
-        <th>
-          {{artist.name}}
-        </th>
-        <th>
-        </th>
-        <tr ng-show="artist.expanded" ng-repeat="album in artist.albums">
-          <td></td>
-          <td colspan="2">
-            <table style="width:100%;">
-              <tbody>
-                <th>
-                </th>
-                <th ng-click="album.expanded = !album.expanded">
-                  &nbsp;<i ng-class="{'fa fa-chevron-right': !album.expanded, 'fa fa-chevron-down': album.expanded}"></i>
-                </th>
-                <th>
-                  {{album.title}}
-                </th>
-                <tr ng-show="album.expanded" ng-repeat="track in album.tracks">
-                  <td>
-
-                  </td>
-                  <td>
-                  </td>
-                  <td>
-                    <button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)">
-                    <i class="fa fa-plus"></i></button>
-                    <span>{{track.title}}</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-
+    <table class="table condensed">
+      <tbody ng-repeat="artist in artists | filter: { name: query } | orderBy: sortAttribute : !sortDescending ">
+        <tr>
+          <th ng-click="artist.expanded = !artist.expanded">
+            <i ng-class="{'fa fa-chevron-right': !artist.expanded, 'fa fa-chevron-down': artist.expanded}"></i>
+          </th>
+          <th>
+            {{artist.name}}
+          </th>
+          <th>
+          </th>
+          <tr ng-show="artist.expanded" ng-repeat="album in artist.albums">
+            <td></td>
+            <td colspan="2">
+              <table style="width:100%;">
+                <tbody>
+                  <th>
+                  </th>
+                  <th ng-click="album.expanded = !album.expanded">
+                    &nbsp;<i ng-class="{'fa fa-chevron-right': !album.expanded, 'fa fa-chevron-down': album.expanded}"></i>
+                  </th>
+                  <th>
+                    {{album.title}}
+                  </th>
+                  <tr ng-show="album.expanded" ng-repeat="track in album.tracks">
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                      <button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)">
+                        <i class="fa fa-plus"></i></button>
+                        <span>{{track.title}}</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div ng-show="showing==='albums'">
+      <table class="table condensed">
+        <tr>
+          <th>&nbsp;</th>
+          <th><span ng-click="sortBy('title')" class="sort-header">Album</span></th>
+          <th><span ng-click="sortBy('artist')" class="sort-header">Atrist</span></th>
         </tr>
-      </tr>
-    </tbody>
-  </table>
-</div>
-  <div ng-show="showing==='albums'">
-  <table class="table condensed">
-    <tr>
-      <th>&nbsp;</th>
-      <th><span ng-click="sortBy('title')" class="sort-header">Album</span></th>
-      <th><span ng-click="sortBy('artist')" class="sort-header">Atrist</span></th>
-    </tr>
-  </table>
-  <table class="table condensed">
-    <tbody ng-repeat="album in albums | filter: { title: query } | orderBy: sortAttribute : !sortDescending ">
-      <tr>
-        <th ng-click="album.expanded = !album.expanded"><i ng-class="{'fa fa-chevron-right': !album.expanded, 'fa fa-chevron-down': album.expanded}"></i></th>
-        <th>{{album.title}}</th>
-        <th>{{album.artist.name}}</th>
-        <tr ng-show="album.expanded" ng-repeat="track in album.tracks">
-          <td><button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button></td>
-          <td colspan="3">{{track.title}}</td>
+      </table>
+      <table class="table condensed">
+        <tbody ng-repeat="album in albums | filter: { title: query } | orderBy: sortAttribute : !sortDescending ">
+          <tr>
+            <th ng-click="album.expanded = !album.expanded"><i ng-class="{'fa fa-chevron-right': !album.expanded, 'fa fa-chevron-down': album.expanded}"></i></th>
+            <th>{{album.title}}</th>
+            <th>{{album.artist.name}}</th>
+            <tr ng-show="album.expanded" ng-repeat="track in album.tracks">
+              <td><button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button></td>
+              <td colspan="3">{{track.title}}</td>
+            </tr>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <table class="table condensed" ng-show="showing==='tracks'">
+      <tbody>
+        <tr>
+          <th>&nbsp;</th>
+          <th><span ng-click="sortBy('title')" class="sort-header">Track</span></th>
+          <th><span ng-click="sortBy('artist')" class="sort-header">Artist</span></th>
+          <th><span ng-click="sortBy('album')" class="sort-header">Album</span></th>
         </tr>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-  <table class="table condensed" ng-show="showing==='tracks'">
-    <tbody>
-      <tr>
-        <th>&nbsp;</th>
-        <th><span ng-click="sortBy('title')" class="sort-header">Track</span></th>
-        <th><span ng-click="sortBy('artist')" class="sort-header">Artist</span></th>
-        <th><span ng-click="sortBy('album')" class="sort-header">Album</span></th>
-      </tr>
-      <tr ng-repeat="track in tracks | filter: { title: query } | orderBy: sortAttribute : !sortDescending ">
+        <tr ng-repeat="track in tracks | filter: { title: query } | orderBy: sortAttribute : !sortDescending ">
           <td><button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button></td>
           <td>{{track.title}}</td>
           <td>{{track.artist}}</td>
           <td>{{track.album}}</td>
         </tr>
-    </tbody>
-  </table>
-
-  <table class="table condensed" ng-show="showing==='playlists'">
-    <tbody ng-repeat="playlist in playlists | filter: { title: query } ">
-      <tr>
-        <th ng-click="playlist.expanded = !playlist.expanded"><i ng-class="{'fa fa-chevron-right': !playlist.expanded, 'fa fa-chevron-down': playlist.expanded}"></i></th>
-        <th>{{playlist.title}}</th>
-        <th>{{playlist.notes}}</th>
-        <tr ng-show="playlist.expanded" ng-repeat="track in playlist.tracks">
-          <td><button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button></td>
-          <td colspan="3">{{track.title}}</td>
+      </tbody>
+    </table>
+    <table class="table condensed" ng-show="showing==='playlists'">
+      <tbody ng-repeat="playlist in playlists | filter: { title: query } ">
+        <tr>
+          <th ng-click="playlist.expanded = !playlist.expanded"><i ng-class="{'fa fa-chevron-right': !playlist.expanded, 'fa fa-chevron-down': playlist.expanded}"></i></th>
+          <th>{{playlist.title}}</th>
+          <th>{{playlist.notes}}</th>
+          <tr ng-show="playlist.expanded" ng-repeat="track in playlist.tracks">
+            <td><button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button></td>
+            <td colspan="3">{{track.title}}</td>
+          </tr>
         </tr>
-      </tr>
-    </tbody>
-  </table>
-</div>
+      </tbody>
+    </table>
+  </div>
