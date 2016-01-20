@@ -129,8 +129,18 @@ myStream.controller('PlayCtrl', function($scope, $http) {
         'This file format is currently unsupported'
     );
     }
-
     console.log($scope.nowPlayingList, jPlayerPlaylist.playlist);
+  };
+
+  $scope.addMultiple = function(tracks) {
+    console.log(tracks);
+    for (var i = 0; i < tracks.length; i++) {
+      jPlayerPlaylist.add({
+        title: tracks[i].title,
+        mp3: tracks[i].url,
+        id: tracks[i].id
+      });
+    }
   };
 
   $scope.remove = function(index) {
