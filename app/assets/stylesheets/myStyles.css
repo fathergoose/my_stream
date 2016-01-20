@@ -138,3 +138,7 @@ table#playlist {
 #current-playlist {
   vertical-align: bottom;
 }
+
+.ten-percent {
+  width: 10%;
+}
