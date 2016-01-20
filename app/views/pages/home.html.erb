@@ -14,7 +14,7 @@
 
   <!-- MANAGEMNET VIEW -->
 
-  <div ng-hide="home" class="col-md-12">
+  <div ng-show="homeView === 'mgmt'" class="col-md-12">
     <div class="panel panel-inverse">
       <div class="panel-heading">
         <div class="panel-heading-btn">
@@ -31,9 +31,27 @@
     </div>
   </div>
 
+  <!-- UPLOAD VIEW -->
+
+  <div ng-show="homeView === 'upload'" class="col-md-12">
+    <div class="panel panel-inverse">
+      <div class="panel-heading">
+        <div class="panel-heading-btn">
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+          <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+        </div>
+        <h4 class="panel-title">jQuery File Upload</h4>
+      </div>
+      <div class="panel-body">
+        <%= render 'layouts/upload' %>
+      </div>
+  </div>
+
   <!-- HOME VIEW -->
 
-  <div ng-show="home" class="col-md-4">
+  <div ng-show="homeView === 'home'" class="col-md-4">
     <div class="panel panel-inverse">
       <div class="panel-heading">
         <div class="panel-heading-btn">
@@ -49,7 +67,7 @@
       </div>
     </div>
   </div>
-  <div ng-show="home" class="col-md-8">
+  <div ng-show="homeView === 'home'" class="col-md-8">
     <div class="panel panel-inverse">
       <div class="panel-heading">
         <div class="panel-heading-btn">

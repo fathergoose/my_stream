@@ -9,7 +9,7 @@ myStream.controller('PlayCtrl', function($scope, $http) {
   $scope.setup = function() {
     $scope.getAlbums();
     $scope.showing = 'albums';
-    $scope.home = true;
+    $scope.homeView = 'home';
   };
 
   $scope.getAlbums = function() {
@@ -61,11 +61,15 @@ myStream.controller('PlayCtrl', function($scope, $http) {
     }
   };
 
+  $scope.changeHomeView = function(view) {
+    $scope.homeView = view;
+  };
+
   $scope.sortBy = function(sortAttribute) {
     console.log(sortAttribute);
     $scope.sortAttribute = sortAttribute;
     $scope.sortDescending = !$scope.sortDescending;
-  }
+  };
 
 /* Playlists Functions */
 
