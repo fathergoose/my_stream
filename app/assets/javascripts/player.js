@@ -1,7 +1,6 @@
 /* global angular,  window, $ */
 
 var myStream = angular.module('myStream', ['ngAnimate']);
-// var scope = angular.element(document.getElementById('PlayCtrl')).scope();
 var jPlayerPlaylist;
 
 /* Library Functions */
@@ -57,8 +56,6 @@ myStream.controller('PlayCtrl', function($scope, $http) {
   };
 
 /* Playlists Functions */
-
-//  $scope.playingList = [];
 
   $scope.$watch(function() {
     return jPlayerPlaylist.playlist;
@@ -145,7 +142,6 @@ myStream.controller('PlayCtrl', function($scope, $http) {
     $http.post('playlists', newPlaylist).then(function(response) {
       $scope.playlist = response.data;
       $scope.getPlaylists();
-      console.log('$$$$$$Success$$$$$$', response.status);
       successNotification(newPlaylist);
     }, function(error) {
       console.log(error, '##########');
