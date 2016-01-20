@@ -50,8 +50,16 @@
       </li>
     </ul>
   </div> -->
-  <table class="table condensed" ng-show="showing==='artists'">
-    <tbody ng-repeat="artist in artists | filter: { name: query } ">
+  <div ng-show="showing==='artists'">
+  <table class="table condensed">
+      <tr>
+        <th>&nbsp;</th>
+        <th><span ng-click="sortBy('name')" class="sort-header">Atrist</span></th>
+        <th>&nbsp;</th>
+      </tr>
+    </table>
+  <table class="table condensed">
+    <tbody ng-repeat="artist in artists | filter: { name: query } | orderBy: sortAttribute : !sortDescending ">
       <tr>
         <th ng-click="artist.expanded = !artist.expanded">
           <i ng-class="{'fa fa-chevron-right': !artist.expanded, 'fa fa-chevron-down': artist.expanded}"></i>
@@ -94,6 +102,7 @@
       </tr>
     </tbody>
   </table>
+</div>
   <div ng-show="showing==='albums'">
   <table class="table condensed">
     <tr>
