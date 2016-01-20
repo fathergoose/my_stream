@@ -61,10 +61,10 @@ myStream.controller('PlayCtrl', function($scope, $http) {
 //  $scope.playingList = [];
 
   $scope.$watch(function() {
-    return jPlayerPlaylist;
+    return jPlayerPlaylist.playlist;
   }, function(playlist) {
-    $scope.nowPlayingList = playlist.playlist;
-  //  $scope.current = jPlayerPlaylist.current;
+    $scope.nowPlayingList = playlist;
+    $scope.current = playlist.current;
   }
 );
 
@@ -87,7 +87,27 @@ myStream.controller('PlayCtrl', function($scope, $http) {
     });
   };
 
-  $scope.getCurrent = function() {
+  $scope.getCurrent = function(mode) {
+    switch (mode) {
+      case 'play':
+      jPlayerPlaylist.play();
+      break;
+      case 'pause':
+      jPlayerPlaylist.pause();
+      break;
+      case 'next':
+      jPlayerPlaylist.next();
+      break;
+      case 'previous':
+      jPlayerPlaylist.previous();
+      break;
+      case 'shuffle':
+      jPlayerPlaylist.shuffle();
+      break;
+      default:
+      return false;
+    };
+    console.log(jPlayerPlaylist.current);
     $scope.current = jPlayerPlaylist.current;
   };
 

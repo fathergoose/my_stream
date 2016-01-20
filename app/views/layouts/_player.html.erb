@@ -39,19 +39,14 @@ Now playing
       </div>
     </div>
     <div class="jp-controls btn-group">
-      <button ng-click="getCurrent()" class="jp-stop btn btn-lg  btn-inverse" role="button" tabindex="0"><i class="fa fa-stop"></i></button>
-      <button ng-click="getCurrent()" class="jp-previous btn btn-lg  btn-inverse" role="button" tabindex="0"><i class="fa fa-fast-backward"></i></button>
-      <button ng-click="getCurrent()" class="jp-play btn btn-lg  btn-inverse" role="button" tabindex="0"><i class="fa fa-play"></i></button>
-      <button ng-click="getCurrent()" class="jp-pause btn  btn-lg btn-inverse" role="button" tabindex="0"><i class="fa fa-pause"></i></button>
-      <button ng-click="getCurrent()" class="jp-next btn btn-lg  btn-inverse" role="button" tabindex="0"><i class="fa fa-fast-forward"></i></button>
-      <button ng-click="getCurrent()" class="jp-shuffle btn  btn-lg btn-inverse" role="button" tabindex="0"><i class="fa fa-random"></i></button>
+      <button ng-click="getCurrent('previous')" class="btn btn-lg  btn-inverse" role="button" tabindex="0"><i class="fa fa-fast-backward"></i></button>
+      <button ng-hide="playing" ng-click="getCurrent('play'); playing = true" class="btn btn-lg  btn-inverse" role="button" tabindex="0"><i class="fa fa-play"></i></button>
+      <button ng-show="playing" ng-click="getCurrent('pause'); playing = false" class="btn  btn-lg btn-inverse" role="button" tabindex="0"><i class="fa fa-pause"></i></button>
+      <button ng-click="getCurrent('next')" class="btn btn-lg  btn-inverse" role="button" tabindex="0"><i class="fa fa-fast-forward"></i></button>
     </div>
   </div>
 
-  <table class="table condensed" id="playlist">
-    <tr>
-      <th></th>
-    </tr>
+  <table class="table condensed" id="playlist" style="margin-top: 10px;">
     <tr>
       <th><span class="fa-stack fa-2x text-danger" ng-click="remove()"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-trash fa-stack-1x"></i></span></th>
       <th>Current Playlist</th>
@@ -87,7 +82,7 @@ Now playing
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Modal Dialog</h4>
+        <h4 class="modal-title">Save Playlist</h4>
       </div>
       <div class="modal-body">
         <div class="form-group">
