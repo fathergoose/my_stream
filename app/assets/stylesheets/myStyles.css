@@ -134,3 +134,7 @@ table#playlist {
 .sort-header {
   cursor: pointer;
 }
+
+#current-playlist {
+  vertical-align: bottom;
+}
