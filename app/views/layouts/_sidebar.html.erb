@@ -18,10 +18,14 @@
 <!-- begin sidebar nav -->
 <ul class="nav">
   <li class="nav-header">Navigation</li>
-  <li><a href="/"><i class="fa fa-home"></i> <span>Home</span></a></li>
-  <li><a href="pages/upload"><i class="fa fa-upload"></i><span>Upload Music</span></a></li>
-  <li><a href="/"><i class="fa fa-book"></i> <span>Your Library</span></a></li>
-  <li><a href="/"><i class="fa fa-gear fa-4x"></i> <span>Settings</span></a></li>
+  <li><a style="cursor:pointer;" ng-click="home=true"><i class="fa fa-home"></i> <span>Home</span></a></li>
+  <li><a style="cursor:pointer;" href="/pages/upload"><i class="fa fa-upload"></i><span>Upload Music</span></a></li>
+  <li><a style="cursor:pointer;" ng-click="home=false"><i class="fa fa-book"></i> <span>Your Library</span></a></li>
+  <li>
+    <%= link_to( destroy_user_session_path, {method: :delete, class: "item", data: {confirm: "Are you sure you would like to leave this page?"}} ) do %>
+      <i class="fa fa-sign-out fa-4x"></i> <span>Logout</span>
+    <% end %>
+  </li>
   <!-- begin sidebar minify button -->
   <!-- <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li> -->
   <!-- end sidebar minify button -->

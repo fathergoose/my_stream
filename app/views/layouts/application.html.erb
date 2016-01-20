@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html  ng-app="myStream">
 <head>
   <title>MyStream</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 </head>
-<body>
+<body ng-controller="PlayCtrl" ng-init="setup()">
   <!--Devise instructed flash messages, change once styling is included -->
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
