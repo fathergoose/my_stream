@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
   get 'playlists' => 'playlists#index'
   post 'playlists' => 'playlists#create'
+  delete 'playlists/:id' => 'playlists#destroy'
 
 
   ## Pages actions

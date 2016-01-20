@@ -16,4 +16,13 @@ class PlaylistsController < ApplicationController
     end
   end
 
+  def destroy
+    @playlist = Playlist.find_by(id: params[:id])
+    if @playlist.destroy
+      render json: { playlist: @playlist }, status: 200
+    else
+      render json: { errors: @playlist.errors.full_messages }, status: 422
+    end
+  end
+
 end

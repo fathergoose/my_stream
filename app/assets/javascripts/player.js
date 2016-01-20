@@ -167,5 +167,13 @@ myStream.controller('PlayCtrl', function($scope, $http) {
     });
   };
 
+  $scope.deletePlaylist = function(playlist) {
+    $http.delete('/playlists/' + playlist.id).then(function(response) {
+      console.log(response);
+    }, function(error) {
+      console.log(error);
+    });
+  };
+
   window.scope = $scope;
 });
