@@ -7,12 +7,16 @@ var jPlayerPlaylist;
 
 myStream.controller('PlayCtrl', function($scope, $http) {
   $scope.setup = function() {
-    $http.get('albums.json').then(function(response) {
-      $scope.albums = response.data;
-      console.log(response);
-    });
+    $scope.getAlbums();
     $scope.showing = 'albums';
     $scope.home = true;
+  };
+
+  $scope.getAlbums = function() {
+    $http.get('albums.json').then(function(response) {
+      $scope.albums = response.data;
+      console.log(response, $scope.albums);
+    });
   };
 
   $scope.getArtists = function() {
@@ -52,7 +56,8 @@ myStream.controller('PlayCtrl', function($scope, $http) {
         $scope.showing = 'playlists';
         break;
       default:
-        $scope.setup();
+        $scope.getAlbums();
+        $scope.showing = 'albums';
     }
   };
 
@@ -170,6 +175,8 @@ myStream.controller('PlayCtrl', function($scope, $http) {
   $scope.deletePlaylist = function(playlist) {
     $http.delete('/playlists/' + playlist.id).then(function(response) {
       console.log(response);
+      var index = $scope.playlists.indexOf(playlist);
+      $scope.playlists.splice(index, 1);
     }, function(error) {
       console.log(error);
     });
