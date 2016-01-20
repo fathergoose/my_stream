@@ -12,6 +12,7 @@ myStream.controller('PlayCtrl', function($scope, $http) {
       console.log(response);
     });
     $scope.showing = 'albums';
+    $scope.home = true;
   };
 
   $scope.getArtists = function() {
