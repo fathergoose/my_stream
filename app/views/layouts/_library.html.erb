@@ -94,14 +94,20 @@
       </tr>
     </tbody>
   </table>
-
-  <table class="table condensed" ng-show="showing==='albums'">
-    <tbody ng-repeat="album in albums | filter: { title: query } ">
+  <div ng-show="showing==='albums'">
+  <table class="table condensed">
+    <tr>
+      <th>&nbsp;</th>
+      <th><span ng-click="sortBy('title')" class="sort-header">Album</span></th>
+      <th><span ng-click="sortBy('artist')" class="sort-header">Atrist</span></th>
+    </tr>
+  </table>
+  <table class="table condensed">
+    <tbody ng-repeat="album in albums | filter: { title: query } | orderBy: sortAttribute : !sortDescending ">
       <tr>
         <th ng-click="album.expanded = !album.expanded"><i ng-class="{'fa fa-chevron-right': !album.expanded, 'fa fa-chevron-down': album.expanded}"></i></th>
         <th>{{album.title}}</th>
         <th>{{album.artist.name}}</th>
-        <th>Year</th>
         <tr ng-show="album.expanded" ng-repeat="track in album.tracks">
           <td><button class="btn btn-xs btn-icon btn-circle btn-success" ng-click="add(track)"><i class="fa fa-plus"></i></button></td>
           <td colspan="3">{{track.title}}</td>
@@ -109,12 +115,13 @@
       </tr>
     </tbody>
   </table>
+</div>
 
   <table class="table condensed" ng-show="showing==='tracks'">
     <tbody>
       <tr>
         <th>&nbsp;</th>
-        <th><span ng-click="sortBy('title')" class="sort-header">Name</span></th>
+        <th><span ng-click="sortBy('title')" class="sort-header">Track</span></th>
         <th><span ng-click="sortBy('artist')" class="sort-header">Artist</span></th>
         <th><span ng-click="sortBy('album')" class="sort-header">Album</span></th>
       </tr>
