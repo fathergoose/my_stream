@@ -5,7 +5,7 @@ var jPlayerPlaylist;
 
 /* Library Functions */
 
-myStream.controller('PlayCtrl', [ '$scope', '$http', function($scope, $http) {
+myStream.controller('PlayCtrl', ['$scope', '$http', function($scope, $http) {
   $scope.setup = function() {
     $scope.getAlbums();
     $scope.showing = 'albums';
