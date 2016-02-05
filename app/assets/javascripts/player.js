@@ -13,28 +13,28 @@ myStream.controller('PlayCtrl', [ '$scope', '$http', function($scope, $http) {
   };
 
   $scope.getAlbums = function() {
-    $http.get('albums.json').then(function(response) {
+    $http.get('/albums.json').then(function(response) {
       $scope.albums = response.data;
       console.log(response, $scope.albums);
     });
   };
 
   $scope.getArtists = function() {
-    $http.get('artists.json').then(function(response) {
+    $http.get('/artists.json').then(function(response) {
       $scope.artists = response.data;
       console.log(response, $scope.artists);
     });
   };
 
   $scope.getTracks = function() {
-    $http.get('tracks.json').then(function(response) {
+    $http.get('/tracks.json').then(function(response) {
       $scope.tracks = response.data;
       console.log(response, $scope.tracks);
     });
   };
 
   $scope.getPlaylists = function() {
-    $http.get('playlists.json').then(function(response) {
+    $http.get('/playlists.json').then(function(response) {
       $scope.playlists = response.data;
       console.log(response, $scope.playlists);
     });
