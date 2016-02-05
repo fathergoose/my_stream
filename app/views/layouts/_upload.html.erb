@@ -1,6 +1,13 @@
 <blockquote class="f-s-14">
   <h3>Drag and drop some files or whole folders anywhere on this page</h3>
   </blockquote>
+  <div class="note note-info">
+    <h4>Notes for Demo:</h4>
+    <ul>
+      <li>Currently, only mp3 are  supported</li>
+      <li>Thanks for trying myStream</li>
+    </ul>
+  </div>
   <form id="fileupload" action="/tracks" method="POST" enctype="multipart/form-data">
     <div class="row fileupload-buttonbar">
       <div class="col-md-7">
@@ -14,13 +21,13 @@
           <span>Start upload</span>
         </button>
         <button type="reset" class="btn btn-warning cancel">
-          <i class="fa fa-ban"></i>
-          <span>Clear upload</span>
+          <i class="fa fa-undo"></i>
+          <span>Clear all</span>
         </button>
-        <button type="button" class="btn btn-danger delete">
+        <!-- <button type="button" class="btn btn-danger delete">
           <i class="glyphicon glyphicon-trash"></i>
           <span>Delete</span>
-        </button>
+        </button> -->
         <!-- The global file processing state -->
         <span class="fileupload-process"></span>
       </div>
@@ -37,14 +44,6 @@
     <!-- The table listing the files available for upload/download -->
     <table role="presentation" class="table table-striped"><tbody class="files"></tbody></table>
   </form>
-  <div class="note note-info">
-    <h4>my_Stream uploader</h4>
-    <ul>
-      <li>Currently, only mp3 playback is supported</li>
-      <li>However, you can still upload it for safe keeping.</li>
-      <li>Thanks for using myStream</li>
-    </ul>
-  </div>
 </div>
 
 <!-- end #content -->
@@ -115,9 +114,9 @@
       </button>
       <input type="checkbox" name="delete" value="1" class="toggle">
       {% } else { %}
-      <button class="btn btn-warning cancel">
-        <i class="glyphicon glyphicon-ban-circle"></i>
-        <span>Cancel</span>
+      <button class="btn btn-success cancel">
+        <i class="glyphicon glyphicon-ok"></i>
+        <span>Done</span>
       </button>
       {% } %}
     </td>

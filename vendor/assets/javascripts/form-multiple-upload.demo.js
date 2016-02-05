@@ -1,4 +1,4 @@
-/*   
+/*
 Template Name: Color Admin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.5
 Version: 1.9.0
 Author: Sean Ngu
@@ -11,9 +11,9 @@ var handleJqueryFileUpload = function() {
         autoUpload: false,
         disableImageResize: /Android(?!.*Chrome)|Opera/.test(window.navigator.userAgent),
         maxFileSize: 50000000,
-        acceptFileTypes: /(\.|\/)(flac|mp3|gif|jpe?g|png)$/i,
+        acceptFileTypes: /(\.|\/)(mp3)$/i,
         // Uncomment the following to send cross-domain cookies:
-        //xhrFields: {withCredentials: true},                
+        //xhrFields: {withCredentials: true},
     });
 
     // Enable iframe cross-domain access via redirect option:
