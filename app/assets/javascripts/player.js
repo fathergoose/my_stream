@@ -113,11 +113,20 @@ myStream.controller('PlayCtrl', [ '$scope', '$http', function($scope, $http) {
       case 'shuffle':
         jPlayerPlaylist.shuffle();
         break;
+      case 'check':
+        console.log('checking');
+        break;
       default:
-        return false;
+        console.log('default case');
     }
     console.log(jPlayerPlaylist.current);
     $scope.current = jPlayerPlaylist.current;
+  };
+
+  $scope.simpleCheck = function() {
+    $scope.$apply(function() {
+      $scope.current = jPlayerPlaylist.current;
+    });
   };
 
   $scope.add = function(track) {

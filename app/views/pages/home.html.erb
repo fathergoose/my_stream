@@ -78,36 +78,40 @@
       </div>
     </div>
   </div>
+</div>
 
-  <script>
-  $(document).ready(function() {
-    nowPlayingList = window.scope.playingList;
-    jPlayerPlaylist = new jPlayerPlaylist({ // eslint-disable-line
-      jPlayer: '#jquery_jplayer_1',
-      cssSelectorAncestor: '#jp_container_1'
-    },
-    nowPlayingList,
-    {
-      solution: 'html, aurora',
-      auroraFormats: 'flac',
-      supplied: 'mp3, flac',
-      wmode: 'window',
-      useStateClassSkin: true,
-      autoBlur: false,
-      smoothPlayBar: true,
-      keyEnabled: true,
-      playlistOptions: {
-        enableRemoveControls: true,
-        removeTime: 0,  // necessary to tie in with angular
-        displayTime: 0,
-        addTime: 0,
-        removeTime: 0,
-        shuffleTime: 0,
-      }
-    });
-
-    $(".js-muute").on("click", function () {
-      $("#jquery_jplayer_1").jPlayer("mute");
-    })
+<script>
+$(document).ready(function() {
+  nowPlayingList = window.scope.playingList;
+  jPlayerPlaylist = new jPlayerPlaylist({ // eslint-disable-line
+    jPlayer: '#jquery_jplayer_1',
+    cssSelectorAncestor: '#jp_container_1'
+  },
+  nowPlayingList,
+  {
+    solution: 'html, aurora',
+    auroraFormats: 'flac',
+    supplied: 'mp3, flac',
+    wmode: 'window',
+    useStateClassSkin: true,
+    autoBlur: false,
+    smoothPlayBar: true,
+    keyEnabled: true,
+    playlistOptions: {
+      enableRemoveControls: true,
+      removeTime: 0,  // necessary to tie in with angular
+      displayTime: 0,
+      addTime: 0,
+      removeTime: 0,
+      shuffleTime: 0,
+    }
   });
-  </script>
+  $("#jquery_jplayer_1").bind($.jPlayer.event.play, function(event) { // Using ".jp-repeat" namespace so we can easily remove this event
+     angular.element($('body')).scope().simpleCheck(); // Add a repeat behaviour so media replays when it ends. (Loops)
+   });
+
+  $(".js-mute").on("click", function () {
+    $("#jquery_jplayer_1").jPlayer("mute");
+  })
+});
+</script>
