@@ -20,7 +20,7 @@
   <li class="nav-header">Navigation</li>
   <li><a style="cursor:pointer;" ng-click="changeHomeView('home')"><i class="fa fa-home"></i> <span>Home</span></a></li>
   <li><a style="cursor:pointer;" ng-click="changeHomeView('upload')"><i class="fa fa-upload"></i><span>Upload Music</span></a></li>
-  <li><a style="cursor:pointer;" ng-click="changeHomeView('mgmt')"><i class="fa fa-book"></i> <span>Your Library</span></a></li>
+  <!-- <li><a style="cursor:pointer;" ng-click="changeHomeView('mgmt')"><i class="fa fa-book"></i> <span>Your Library</span></a></li> -->
   <li>
     <%= link_to( destroy_user_session_path, {method: :delete, class: "item", data: {confirm: "Are you sure you would like to leave this page?"}} ) do %>
       <i class="fa fa-sign-out fa-4x"></i> <span>Logout</span>
