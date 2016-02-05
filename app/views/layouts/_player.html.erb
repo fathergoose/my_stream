@@ -48,9 +48,21 @@ Now playing
 
   <table class="table condensed" id="playlist" style="margin-top: 10px;">
     <tr>
-      <th><span class="fa-stack fa-2x text-danger" ng-click="remove()"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-trash fa-stack-1x"></i></span></th>
+      <th>
+        <span class="fa-stack fa-2x text-danger" ng-click="remove()" title="Clear Playlist">
+          <i class="fa fa-square-o fa-stack-2x"></i>
+          <i class="fa fa-trash fa-stack-1x"></i>
+        </span>
+      </th>
       <th id="current-playlist">Current Playlist</th>
-      <th><a href="#modal-dialog" data-toggle="modal"><span class="fa-stack fa-2x text-success" ><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-save fa-stack-1x"></i></span></button></a></th>
+      <th>
+        <a href="#modal-dialog" data-toggle="modal" title="Save Playlist">
+          <span class="fa-stack fa-2x text-success" >
+            <i class="fa fa-square-o fa-stack-2x"></i>
+            <i class="fa fa-save fa-stack-1x"></i>
+          </span>
+        </a>
+      </th>
       <!--ng-click="savePlaylist(nowPlayingList)"-->
     </tr>
     <tbody ng-repeat="track in nowPlayingList track by $index">
