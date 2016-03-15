@@ -59,11 +59,16 @@
 	</div>
 	<!-- end page container -->
 	
-	<script>
-		$(document).ready(function() {
-			App.init();
-			LoginV2.init();
-		});
-	</script>
+        <script>
+         $(document).ready(function() {
+           App.init();
+           LoginV2.init();
+           $.gritter.add({
+             title: 'Here for a demo?',
+             text: 'Sign in as <strong>demo@ilseman.com</strong><br/>Using the password <strong>password</strong>',
+             sticky: true
+           });
+         });
+        </script>
 </body>
 </html>
