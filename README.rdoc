@@ -26,13 +26,13 @@ You can think of it as a BYOM (bring your own music) version of Spotify
 
   $ rake db:setup
 
-This will create a user with the credentials *email:* user@my-stream.io *password:* password.
+This will create a user with the credentials <tt>email: user@my-stream.io password: password</tt>.
 
 To launch the application in development mode, run
 
   $ rails server
 
-Then visit http://localhost:3000 and with the above credentials.
+Then visit http://localhost:3000 and login with the above credentials.
 
 === Configuration
 
@@ -50,14 +50,12 @@ Currently, all new users need to be made from the rails console. The ability for
     (0.9ms)  COMMIT
   => true
   irb(main):003:0> 
+
+Now you can login as <tt>bob@gmail.com</tt> using the password <tt>b389C    V20n</tt>
    
+=== Testing
 
-* Configuration
+This application is tested using Rspec. To run the test suite just:
 
-* Database creation
+  $ bundle exec rspec
 
-* Database initialization
-
-* How to run the test suite
-
-* Deployment instructions
