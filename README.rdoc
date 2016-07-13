@@ -1,28 +1,61 @@
-== README
+= Description
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An application to store your personal music library in the cloud. This application allows:
+- Batch uploading
+- Automatic cataloging by track metadata
+- Playlist creation
+- Muiltiple users
 
-Things you may want to cover:
+You can think of it as a BYOM (bring your own music) version of Spotify
 
-* Ruby version
+=== Requirements
 
-* System dependencies
+- Ruby 2.2
+- Rails 4.2.4
+- Postgresql
 
-* Configuration
+=== Clone
 
-* Database creation
+  $ git clone https://github.com/gathergoose/my_stream && cd my_stream
 
-* Database initialization
+=== Install gems
 
-* How to run the test suite
+  $ bundle install
 
-* Services (job queues, cache servers, search engines, etc.)
+=== Create, seed, and migrate the database
 
-* Deployment instructions
+  $ rake db:setup
 
-* ...
+This will create a user with the credentials <tt>email: user@my-stream.io password: password</tt>.
 
+To launch the application in development mode, run
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+  $ rails server
+
+Then visit http://localhost:3000 and login with the above credentials.
+
+=== Configuration
+
+Currently, all new users need to be made from the rails console. The ability for an "admin" to "invite" users has yet to be built into the front-end of the application.
+*For example:*
+
+  $ rails console
+
+  irb(main):001:0> bob =  User.new(email: "bob@gmail.com", password: "b389CV20n") 
+  => #<User id: nil, username: "", admin: false, email: "bob@gmail.com", encrypted_password: "$2a$10$nWVAPj.ZuDeCmuopeupIg.DYq3WYeGMx9klhU0jQbeI...", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, created_at: nil, updated_at: nil>
+  irb(main):002:0> bob.save
+    (0.3ms)  BEGIN
+    User Exists (0.6ms)  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'bob@gmail.com' LIMIT 1
+    SQL (0.8ms)  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "bob@gmail.com"], ["encrypted_password", "$2a$10$nWVAPj.ZuDeCmuopeupIg.DYq3WYeGMx9klhU0jQbeIQTJEEqDkqi"], ["created_at", "2016-07-13 21:21:04.535939"], ["updated_at", "2016-07-13 21:21:04.535939"]]
+    (0.9ms)  COMMIT
+  => true
+  irb(main):003:0> 
+
+Now you can login as <tt>bob@gmail.com</tt> using the password <tt>b389C    V20n</tt>
+   
+=== Testing
+
+This application is tested using Rspec. To run the test suite just:
+
+  $ bundle exec rspec
+
